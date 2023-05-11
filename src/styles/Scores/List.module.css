@@ -1,0 +1,84 @@
+.listItem {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: var(--border1);
+}
+
+.number {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.nameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.houseContainer {
+  margin-left: 2rem;
+  position: relative;
+  transform: translateY(7px);
+}
+
+
+/* house label */
+.houseName::before {
+  content: "haus of";
+  position: absolute;
+  color: var(--lightOpaque);
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  top: -19px;
+  left: -10px;
+}
+
+.houseName {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.points {
+  margin-left: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  width: 70px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--br);
+  color: var(--dark);
+  background: var(--accent);
+}
+
+@media only screen and (min-width: 768px) {
+  .name::after {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 45px;
+    background: var(--accent);
+    transform: translateX(26px) rotate(15deg);
+    border-radius: var(--br);
+  }
+
+  .name {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+}

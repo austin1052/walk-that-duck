@@ -1,0 +1,89 @@
+@import url("https://use.typekit.net/qvl8bhx.css");
+
+:root {
+  --black: #0A0A0A;
+  /* --dark: #121212; */
+  --dark: rgba(22,22,22,1);
+  --mid: #5A5A5A;
+  --light: rgb(255, 207, 231);
+  --lightOpaque: rgb(255, 207, 231, 0.2);
+  --accent: rgba(220, 125, 180);
+  --accentOpaque: rgba(220, 125, 180, 0.6);
+  --br: 4px;
+  --border1: 1px solid var(--lightOpaque);
+  --border2: 2px solid var(--lightOpaque);
+  --bs: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --green: rgb(14, 160, 58, 0.2);
+  --greenSolid: rgb(14, 160, 58);
+  --greenBorder: rgb(14, 160, 58, 0.5);
+  --red: rgb(200, 70, 70, 0.2);
+  --redBorder: rgb(200, 70, 70, 0.5);
+  --gold: rgb(251, 211, 9, 0.2);
+  --goldBorder: rgb(251, 211, 9, 0.4);
+  --silver: rgb(130, 130, 130, 0.2);
+  --silverBorder: rgb(130, 130, 130, 0.5);
+  --orange: rgb(232, 164, 69, 0.2);
+  --orangeBorder: rgb(232, 164, 69, 0.5);
+  --yellow: rgb(255, 240, 14, 0.2);
+  --yellowBorder: rgb(255, 240, 14, 0.5);
+  --blue: rgb(39, 221, 239, 0.2);
+  --blueBorder: rgb(39, 221, 239, 0.4);
+  --marginMobile: 0.50rem;
+  --marginDesktop: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: ofelia-display, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--light);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  width: 100%;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--marginDesktop);
+  padding-left: var(--marginDesktop);
+  padding-right: var(--marginDesktop);
+  background: linear-gradient(0deg, var(--black) 0%, var(--dark) 100%);
+}
+
+.page-container.background-pink {
+  background: linear-gradient(45deg, hsla(325, 58%, 68%, 1) 0%, hsla(330, 100%, 91%, 1) 100%);
+}
+
+h1 {
+  color: var(--accent);
+}
+
+/* this sets theme color for mobile browser */
+body {
+  background-color: var(--dark);
+}
+
+body:has(.background-pink) {
+  background-color: var(--light);
+}
+
+@media only screen and (max-width: 768px) {
+  .page-container {
+    padding-top: var(--marginMobile);
+    padding-left: var(--marginMobile);
+    padding-right: var(--marginMobile);
+ }
+}
+

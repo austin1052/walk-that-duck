@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 250px;
+  background: var(--dark);
+  border: var(--border2);
+  border-radius: var(--br);
+  margin-right: 1rem;
+}
+
+.container:last-of-type {
+  margin-right: 0;
+}
+
+.name {
+  color: var(--accent);
+}
+
+.points {
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+.label {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--lightOpaque);
+}
+
+.houseName {
+  font-weight: 500;
+  color: var(--accent);
+}

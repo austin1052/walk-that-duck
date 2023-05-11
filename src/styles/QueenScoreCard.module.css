@@ -1,0 +1,182 @@
+.scoreCardContainer {
+ position: relative;
+ padding: 0.5rem;
+ padding-bottom: 0.5rem;
+ margin-bottom: var(--marginDesktop);
+ border: var(--border2);
+ border-radius: var(--br);
+ grid-template-rows: auto auto;
+ box-shadow: var(--bs);
+ max-height: 90px;
+ transition: max-height 400ms;
+ background: var(--lightOpaque);
+}
+
+.scoreCardContainer.menuOpen {
+  background: var(--accentOpaque);
+}
+
+.scoreCardContainer:hover.menuOpen {
+  background: var(--accentOpaque);
+}
+
+.scoreCardContainer:hover {
+  background: var(--accentOpaque);
+  transition: 300ms;
+}
+
+.scoreCardContainer:hover .imageContainer img {
+  border-radius: var(--br);
+  transform: scale(1.1);
+}
+
+.infoContainer {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: right;
+  z-index: 20;
+}
+
+.imageContainer {
+  /* .scoreCardContainer max-height - 20 */
+  width: 70px;
+  height: 70px;
+  grid-column: span 1;
+  grid-row: span 2;
+  border-radius: var(--br);
+  box-shadow: var(--bs);
+  object-fit: contain;
+  overflow: hidden;
+  position: relative;
+  /* fixes safari bug that causes border radius to be removed when image is scaled */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.imageContainer img {
+  max-width: 100%;
+  height: 100%;
+  /* opacity: 0.9; */
+  display: block;
+  /* margin: auto; */
+  position: relative;
+  transition: 1s;
+}
+
+.queenName {
+  grid-column: span 3;
+  transform: translateY(-4px);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  color: var(--dark);
+}
+
+.pointsContainer {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: -8px;
+  left: -8px;
+  z-index: 30;
+  background: var(--greenSolid);
+  border-radius: var(--br);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.points {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.cross {
+  position: absolute;
+  height: 8px;
+  width: 100px;
+  background: rgb(200, 70, 70);
+  z-index: 10;
+  transform: translate(-16.5px, 30.5px) rotate(45deg);
+}
+
+.cross::after {
+  content: "";
+  display: block;
+  height: 8px;
+  width: 100px;
+  background: rgb(200, 70, 70);
+  z-index: 20;
+  transform: rotate(90deg);
+}
+
+.menuOpen {
+  max-height: 500px;
+}
+
+.arrow {
+  /* position: absolute; */
+
+  height: 10px;
+  width: 10px;
+  border: solid var(--light);
+  border-width: 0 2px 2px 0;
+  border-radius: 1px;
+  margin-right: auto;
+  margin-left: auto;
+  transform: translateY(-0.75rem) rotate(45deg);
+  /* transform: rotate(45deg); */
+  transition: 300ms;
+}
+
+.arrow.open {
+  transform: rotate(-135deg);
+}
+
+@media only screen and (max-width: 768px) {
+ .scoreCardContainer {
+  max-height: 75px;
+  padding: 0.5rem;
+  margin-bottom: var(--marginMobile);
+ }
+
+ .scoreCardContainer:hover {
+  background: var(--lightOpaque);
+}
+
+ .menuOpen {
+  max-height: 500px;
+}
+
+ .imageContainer {
+  /* .scoreCardContainer max-height - 20 */
+  width: 55px;
+  height: 55px;
+ }
+ 
+ .queenName {
+  font-size: 0.9rem;
+ }
+
+ .pointsContainer {
+  height: 25px;
+  width: 25px;
+  top: -6px;
+  left: -6px;
+ }
+
+ .points {
+  font-size: 0.8rem;
+}
+
+.cross {
+  width: 78px;
+  transform: translate(-12.5px, 23px) rotate(45deg);
+}
+
+.cross::after {
+  width: 78px;
+  transform: rotate(90deg);
+}
+}
