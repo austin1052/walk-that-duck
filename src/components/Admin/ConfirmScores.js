@@ -2,7 +2,6 @@ import styles from '../../styles/Admin/ConfirmScores.module.css'
 
 export default function ConfirmScores({ setConfirmScoresOpen, allQueens }) {
 
-  console.log(allQueens);
   return (
     <div className={styles.container}>
       <div className={styles.modal}>

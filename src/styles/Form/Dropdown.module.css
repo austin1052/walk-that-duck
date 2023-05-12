@@ -1,6 +1,6 @@
 .selectButton {
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background: var(--black);
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
 }
 
 .buttonText {
-  color: var(--mid);
+  color: var(--light);
   font-weight: 300;
 }
 
@@ -31,10 +31,9 @@
 .listItems {
   background: var(--black);
   position: absolute;
-  transform: translateY(-2.2rem);
+  transform: translateY(-1.2rem);
   z-index: 10;
   width: calc(100% - 2rem);
-  /* width: calc(400px - 2rem); */
   max-height: 0;
   visibility: hidden;
   opacity: 0;
@@ -67,6 +66,10 @@
 
 .listItem:hover {
   background: var(--lightOpaque);
+}
+
+.input {
+  min-height: 1rem;
 }
 
 .checkbox {

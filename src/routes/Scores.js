@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import Card from "../components/Scores/Card.js"
 import List from "../components/Scores/List.js"
-import { db } from '../config/index.js';
-// import { db } from '../config/local.js';
+// import { db } from '../config/index.js';
+import { db } from '../config/local.js';
 import { ref, onValue } from "firebase/database";
+import { currentSeason } from '../utils/data.js';
 import styles from '../styles/Scores/Scores.module.css'
 import { mergeSort } from "../utils/index.js";
 import { MobileContext } from "../context/MobileContext.js"
@@ -17,7 +18,6 @@ export default function Scores({ allQueensData }) {
   const [otherPlayers, setOtherPlayers] = useState([])
   const isMobile = useContext(MobileContext)
 
-
   // creates queen list, gets list and their total points
   useEffect(() => {
     const queenIDs = Object.keys(allQueensData)
@@ -29,7 +29,7 @@ export default function Scores({ allQueensData }) {
       }
     })
 
-    const queensRef = ref(db, "queenPoints/")
+    const queensRef = ref(db, currentSeason + "/queenPoints/")
     onValue(queensRef, (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val()
@@ -44,7 +44,7 @@ export default function Scores({ allQueensData }) {
   // gets and sets playerInfo
   useEffect(() => {
     const players = {}
-    const playersRef = ref(db, "players/")
+    const playersRef = ref(db, currentSeason + "/players/")
     onValue(playersRef, (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val()
@@ -78,7 +78,7 @@ export default function Scores({ allQueensData }) {
 
   // gets players queen list, calculates their total points, sets playerPoints
   function calculatePlayerPoints(queenData) {
-    const playerQueensRef = ref(db, "playerQueens/")
+    const playerQueensRef = ref(db, currentSeason + "/playerQueens/")
     onValue(playerQueensRef, (snapshot) => {
       const players = {};
       if (snapshot.exists()) {

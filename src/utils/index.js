@@ -17,18 +17,19 @@ function merge(left, right) {
       array.push(right.shift())
     }
   }
-  // console.log(array);
   return array.concat(left.slice()).concat(right.slice());
 }
 
 export function countSelected(queensList, category) {
   let count = 0;
+  const selectedQueens = [];
   queensList.forEach((queen) => {
     if (queen.selected[category]) {
       count++;
+      selectedQueens.push(queen.name.split(" ")[0])
     }
   })
-  return count;
+  return [count, selectedQueens];
 }
 
 export function isAlreadySelected(queen, category) {

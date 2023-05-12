@@ -1,35 +1,27 @@
-import amethyst from "../assets/amethyst.jpg";
-import anetra from "../assets/anetra.jpg";
-import auramayari from "../assets/auramayari.jpg";
-import irenedubois from "../assets/irenedubois.jpg";
-import jax from "../assets/jax.jpg";
-import looseyladuca from "../assets/looseyladuca.jpg";
-import luxxnoirlondon from "../assets/luxxnoirlondon.jpg";
-import marciax3 from "../assets/marciax3.jpg";
-import mbdf from "../assets/mbdf.jpg";
-import mib from "../assets/mib.jpg";
-import princesspoppy from "../assets/princesspoppy.jpg";
-import robinfierce from "../assets/robinfierce.jpg";
-import salinaestitties from "../assets/salinaestitties.jpg";
-import sashacolby from "../assets/sashacolby.jpg";
-import spice from "../assets/spice.jpg";
-import sugar from "../assets/sugar.jpg";
+import alexismichelle from "../assets/alexismichelle.webp";
+import dariennelake from "../assets/dariennelake.webp";
+import heidincloset from "../assets/heidincloset.webp";
+import jaymesmansfield from "../assets/jaymesmansfield.webp";
+import jessicawild from "../assets/jessicawild.webp";
+import jimbo from "../assets/jimbo.webp";
+import kahannamontrese from "../assets/kahannamontrese.webp";
+import kandymuse from "../assets/kandymuse.webp";
+import lalari from "../assets/lalari.webp";
+import monicabeverlyhillz from "../assets/monicabeverlyhillz.webp";
+import mrskashadavis from "../assets/mrskashadavis.webp";
+import nayshalopez from "../assets/nayshalopez.webp";
 
 export const queenImages = {
-  amethyst,
-  anetra,
-  auramayari,
-  irenedubois,
-  jax,
-  looseyladuca,
-  luxxnoirlondon,
-  marciax3,
-  mbdf,
-  mib,
-  princesspoppy,
-  robinfierce,
-  salinaestitties,
-  sashacolby,
-  spice,
-  sugar
+  alexismichelle,
+  dariennelake,
+  heidincloset,
+  jaymesmansfield,
+  jessicawild,
+  jimbo,
+  kahannamontrese,
+  kandymuse,
+  lalari,
+  monicabeverlyhillz,
+  mrskashadavis,
+  nayshalopez
 }

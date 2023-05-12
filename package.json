@@ -36,5 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "css-modules-require-hook": "^4.2.3"
+  }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { db } from '../../config/index.js';
 // import { db } from '../../config/local.js';
 import { ref, onValue } from "firebase/database";
+import { currentSeason } from '../../utils/data.js';
 import AdminHeader from '../../components/Admin/Header.js'
 import QueenColumn from "../../components/QueenColumn.js"
 import ConfirmScores from '../../components/Admin/ConfirmScores.js'
@@ -10,6 +11,8 @@ import { createColumnGroups } from '../../utils/index.js'
 import styles from "../../styles/Admin/Dashboard.module.css"
 
 export default function UpdateScores({ allQueensData }) {
+  // console.log("scores", allQueensData);
+
   const [allQueens, setAllQueens] = useState()
   const [columnGroups, setColumnGroups] = useState()
   const [confirmScoresOpen, setConfirmScoresOpen] = useState(false)
@@ -22,7 +25,8 @@ export default function UpdateScores({ allQueensData }) {
       const queenIDs = Object.keys(allQueensData)
       const queens = [];
       queenIDs.forEach((id) => {
-        const pointsList = Object.values(queenPoints[id])
+        console.log(queenPoints);
+        const pointsList = Object.values(queenPoints[id] || {})
         const currentWeekPoints = pointsList.pop()
         const { name, active } = allQueensData[id]
         if (active) {
@@ -48,13 +52,14 @@ export default function UpdateScores({ allQueensData }) {
     }
   }, [allQueensData, queenPoints])
 
+
   useEffect(() => {
     const columns = createColumnGroups(allQueens, isMobile)
     setColumnGroups(columns)
   }, [allQueens, isMobile])
 
   useEffect(() => {
-    const queensRef = ref(db, "queenPoints/")
+    const queensRef = ref(db, currentSeason + "/queenPoints/")
     onValue(queensRef, (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val()

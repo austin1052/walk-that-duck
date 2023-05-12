@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ref, onValue } from "firebase/database"
-import { db } from './config/index.js'
+// import { db } from './config/index.js'
+import { db } from './config/local.js'
+import { currentSeason } from './utils/data.js'
+import CreatePlayerSuccess from './routes/CreatePlayerSuccess.js'
 import Dashboard from './routes/Admin/Dashboard.js'
 import UpdateScores from './routes/Admin/Scores.js'
 import Scores from "./routes/Scores.js"
@@ -17,7 +20,7 @@ function App() {
 
   useEffect(() => {
 
-    const queensRef = ref(db, "queens/")
+    const queensRef = ref(db, currentSeason + "/queens")
     onValue(queensRef, (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val()
@@ -28,6 +31,8 @@ function App() {
       }
     })
   }, [])
+
+  // console.log("app", allQueensData);
 
   return (
     <MobileContextProvider>
@@ -40,6 +45,8 @@ function App() {
               <Route path="/log-in" element={<LogIn />} />
               <Route path="/" element={<Scores allQueensData={allQueensData} />} />
               <Route path="/create-player" element={<CreatePlayer allQueensData={allQueensData} />} />
+              <Route path="/create-player-success" element={<CreatePlayerSuccess />} />
+
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/scores" element={<UpdateScores allQueensData={allQueensData} />} />
             </Routes>

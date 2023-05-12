@@ -5,16 +5,26 @@
   padding: 1rem;
   overflow: hidden;
   position: fixed;
+  width: 100%;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
+  position: fixed;
+  top: 1rem;
+  margin: 0 1rem;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  width: min(400px, 100%);
+}
+
+.form label {
+  padding: 0 0.3rem 0.5rem;
 }
 
 .form input {
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem;
   background: var(--black);
   border: none;
@@ -28,20 +38,22 @@
 }
 
 .inputContainer {
+  /* width: 400px; */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   padding: 1rem;
   transition: 500ms;
   border-radius: var(--br);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
-.queenForm {
-  transform: translate(0%, -100%);
+.form > div {
+  position: absolute;
+  width: 100%;
 }
 
-.queenForm.hiddenRight {
-  transform: translate(1000%, -100%); 
+.form > div.hiddenRight {
+  transform: translateX(1000%);
 }
 
 /* .inputContainer:last-of-type{
@@ -97,6 +109,55 @@
 .submitButton:hover {
   background: var(--lightOpaque);
   border-color: var(--accent);
+}
+
+.categoryHeader {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.queenConfirmCard {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.queenConfirmCard img {
+  margin-right: 1rem;
+  height: 50px;
+  width: 50px;
+  border-radius: var(--br);
+}
+
+.displayName {
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  /* margin: 0 1rem 0.5rem; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+/* 
+.displayHouseName::before {
+  content: "haus of";
+  position: absolute;
+  color: var(--lightOpaque);
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  top: -19px;
+  left: -10px;
+} */
+
+.displayHouseName {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+
+  /* margin-right: 1rem; */
+  /* margin: 0 1rem 0.5rem; */
+
 }
 
 @media only screen and (max-width: 432px) {
