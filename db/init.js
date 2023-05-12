@@ -1,8 +1,8 @@
 // need to comment out styles import and pointButtonStyles in data.js for this to run 
 
 import { ref, set } from "firebase/database"
-// import { db } from "../src/config/index.js"
-import { db } from "../src/config/local.js"
+import { db } from "../src/config/index.js"
+// import { db } from "../src/config/local.js"
 import { queenData, players, currentSeason, episodeDates } from "../src/utils/data.js";
 import { createNewPlayer } from "../src/utils/db.js";
 

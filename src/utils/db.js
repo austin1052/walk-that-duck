@@ -1,5 +1,5 @@
-// import { db } from '../config/index.js';
-import { db } from '../config/local.js';
+import { db } from '../config/index.js';
+// import { db } from '../config/local.js';
 import { currentSeason } from './data.js';
 import { set, get, ref, child, getDatabase, update, increment } from 'firebase/database'
 import { initialCategories } from "./data.js"

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
 import Card from "../components/Scores/Card.js"
 import List from "../components/Scores/List.js"
-// import { db } from '../config/index.js';
-import { db } from '../config/local.js';
+import { db } from '../config/index.js';
+// import { db } from '../config/local.js';
 import { ref, onValue } from "firebase/database";
 import { currentSeason } from '../utils/data.js';
 import styles from '../styles/Scores/Scores.module.css'

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ref, onValue } from "firebase/database"
-// import { db } from './config/index.js'
-import { db } from './config/local.js'
+import { db } from './config/index.js'
+// import { db } from './config/local.js'
 import { currentSeason } from './utils/data.js'
 import CreatePlayerSuccess from './routes/CreatePlayerSuccess.js'
 import Dashboard from './routes/Admin/Dashboard.js'
