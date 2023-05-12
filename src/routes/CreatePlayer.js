@@ -57,6 +57,10 @@ export default function CreatePlayer({ allQueensData }) {
   }
 
   function handleChooseQueens(event) {
+    if (username.length === 0 | name.length === 0 | houseName.length === 0) {
+      alert("please fill out all fields")
+      return
+    }
     event.preventDefault();
     setFormStep(2)
   }
