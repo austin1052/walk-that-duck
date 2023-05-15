@@ -5,7 +5,7 @@ import { options } from '../utils/data.js'
 import { useNavigate } from 'react-router-dom';
 // import Image from '../components/Image.js';
 import styles from '../styles/CreatePlayer.module.css';
-import QueenInfoCard from '../components/QueenInfoCard.js';
+// import QueenInfoCard from '../components/QueenInfoCard.js';
 
 export default function CreatePlayer({ allQueensData }) {
   const [queensList, setQueensList] = useState([]);

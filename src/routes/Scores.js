@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import Card from "../components/Scores/Card.js"
+// import Card from "../components/Scores/Card.js"
 import List from "../components/Scores/List.js"
 import { db } from '../config/index.js';
 // import { db } from '../config/local.js';
