@@ -3,8 +3,9 @@ import { createNewPlayer } from '../utils/db.js';
 import QueenSelection from '../components/QueenSelection.js'
 import { options } from '../utils/data.js'
 import { useNavigate } from 'react-router-dom';
-import Image from '../components/Image.js';
+// import Image from '../components/Image.js';
 import styles from '../styles/CreatePlayer.module.css';
+import QueenInfoCard from '../components/QueenInfoCard.js';
 
 export default function CreatePlayer({ allQueensData }) {
   const [queensList, setQueensList] = useState([]);
@@ -159,17 +160,23 @@ export default function CreatePlayer({ allQueensData }) {
           <div className={confirmFormCSS}>
             <div className={styles.displayName}>{name}</div>
             <div className={styles.displayHouseName}>{houseName}</div>
-            <div className={styles.categoryHeader}>Winner</div>
+
+            {
+              queensList && queensList.forEach((queen) => {
+                let winner, slayers, players = []
+                if (queen.selected.winner) winner.push(queen)
+                if (queen.selected.slayer) slayers.push(queen)
+                if (queen.selected.player) players.push(queen)
+              })
+            }
+
+
+            {/* <div className={styles.categoryHeader}>Winner</div>
             {
               queensList && queensList.map(queen => {
                 if (queen.selected.winner) {
                   return (
-                    <div className={styles.queenConfirmCard}>
-                      <Image queen={queen} />
-                      <div>
-                        {queen.name}
-                      </div>
-                    </div>
+                    <QueenInfoCard queen={queen} />
                   )
                 }
                 return null
@@ -180,12 +187,7 @@ export default function CreatePlayer({ allQueensData }) {
               queensList && queensList.map(queen => {
                 if (queen.selected.slayer) {
                   return (
-                    <div className={styles.queenConfirmCard}>
-                      <Image queen={queen} />
-                      <div>
-                        {queen.name}
-                      </div>
-                    </div>
+                    <QueenInfoCard queen={queen} />
                   )
                 }
                 return null
@@ -197,17 +199,12 @@ export default function CreatePlayer({ allQueensData }) {
               queensList && queensList.map(queen => {
                 if (queen.selected.player) {
                   return (
-                    <div className={styles.queenConfirmCard}>
-                      <Image queen={queen} />
-                      <div>
-                        {queen.name}
-                      </div>
-                    </div>
+                    <QueenInfoCard queen={queen} />
                   )
                 }
                 return null
               })
-            }
+            } */}
             <div className={styles.buttons}>
               <div className={styles.backButton} onClick={toggleForm}></div>
               <div className={styles.submitButton} onClick={handleSubmit} role="button" aria-label="create team">create team</div>

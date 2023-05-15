@@ -115,7 +115,7 @@ export default function Scores({ allQueensData }) {
         {/* <div className={styles.headerContainer}>
           <h1>Top Three</h1>
         </div> */}
-        <div className={styles.topThreeContainer}>
+        {/* <div className={styles.topThreeContainer}>
           {
             (topThreePlayers && !isMobile) &&
             topThreePlayers.map((player, idx) => {
@@ -124,10 +124,10 @@ export default function Scores({ allQueensData }) {
               )
             })
           }
-        </div>
+        </div> */}
         <div className={`${styles.listContainer} ${styles.topThreeListContainer}`}>
           {
-            (topThreePlayers && isMobile) &&
+            (topThreePlayers) &&
             topThreePlayers.map((player, idx) => {
               idx = idx + 1
               return (
