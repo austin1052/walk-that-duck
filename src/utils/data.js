@@ -1,6 +1,5 @@
 import styles from "../styles/PointBar.module.css"
 
-
 export const pointButtonStyles = {
   winner: {
     normal: `${styles.span3} ${styles.winner}`,
