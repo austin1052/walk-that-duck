@@ -20,6 +20,7 @@ export default function ConfirmScores({ setConfirmScoresOpen, allQueens }) {
                 </div>
               )
             }
+            return null
           })
         }
         {/* <h1>confirm scores</h1> */}
