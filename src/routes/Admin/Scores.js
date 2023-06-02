@@ -18,16 +18,18 @@ export default function UpdateScores({ allQueensData }) {
   const [confirmScoresOpen, setConfirmScoresOpen] = useState(false)
   const [queenPoints, setQueenPoints] = useState()
 
+  console.log(queenPoints);
   const isMobile = useContext(MobileContext)
 
   useEffect(() => {
     if (queenPoints !== undefined) {
+      // console.log(queenPoints);
       const queenIDs = Object.keys(allQueensData)
       const queens = [];
       queenIDs.forEach((id) => {
-        console.log(queenPoints);
-        const pointsList = Object.values(queenPoints[id] || {})
+        const pointsList = Object.values(queenPoints[id])
         const currentWeekPoints = pointsList.pop()
+        console.log(currentWeekPoints);
         const { name, active } = allQueensData[id]
         if (active) {
           queens.push({

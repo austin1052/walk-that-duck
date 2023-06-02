@@ -46,7 +46,6 @@ function App() {
               <Route path="/" element={<Scores allQueensData={allQueensData} />} />
               <Route path="/create-player" element={<CreatePlayer allQueensData={allQueensData} />} />
               <Route path="/create-player-success" element={<CreatePlayerSuccess />} />
-
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/scores" element={<UpdateScores allQueensData={allQueensData} />} />
             </Routes>

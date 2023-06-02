@@ -169,7 +169,7 @@ export default function CreatePlayer({ allQueensData }) {
                 if (queen.selected.player) players.push(queen)
               })
             } */}
-
+            {/* loop through only once. push winner to position 0, push slayers to position 2, players to position 3  */}
 
             <div className={styles.categoryHeader}>Winner</div>
             {

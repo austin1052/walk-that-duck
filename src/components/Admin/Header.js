@@ -25,6 +25,7 @@ export default function AdminHeader({ allQueens, setAllQueens, setConfirmScoresO
   return (
     <div className={styles.container}>
       <h1>Episode Date: {formatedWeek}</h1>
+      {/* <h1>Week {week}</h1> */}
       <div className={styles.submit} onClick={submitPoints} role="button" aria-label="submit points">Submit Points</div>
     </div>
   )

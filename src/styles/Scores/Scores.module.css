@@ -10,21 +10,36 @@
 }
 
 .topThreeListContainer {
-  /* margin-bottom: calc(2 * var(--marginMobile)); */
+  margin-bottom: calc(2 * var(--marginMobile));
 }
 
 .headerContainer {
   background: var(--accent);
   text-align: center;
+  margin: var(--marginDesktop) 0;
   padding-bottom: 4px;
   padding-left: 0.75rem;
   padding-right: 1rem;
   text-transform: lowercase;
   border-radius: var(--br);
-  transform: translateX(-0.75rem);
+  /* transform: translateX(-0.75rem); */
+  animation: slide-up 1500ms both;
+}
+
+
+@keyframes slide-up {
+  0% {
+    transform: translate(-0.75rem, 20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-0.75rem, 0);
+    opacity: 1;
+  }
 }
 
 .headerContainer h1 {
+  font-size: 1.5rem;
   color: var(--dark);
   text-transform: lowercase;
   font-weight: 700;

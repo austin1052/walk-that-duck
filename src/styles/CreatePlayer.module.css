@@ -112,32 +112,17 @@
 }
 
 .categoryHeader {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--accent);
   margin-bottom: 0.5rem;
-}
-
-.queenConfirmCard {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
-.queenConfirmCard img {
-  margin-right: 1rem;
-  height: 50px;
-  width: 50px;
-  border-radius: var(--br);
 }
 
 .displayName {
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 0.5rem;
-  /* margin: 0 1rem 0.5rem; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
+
 /* 
 .displayHouseName::before {
   content: "haus of";

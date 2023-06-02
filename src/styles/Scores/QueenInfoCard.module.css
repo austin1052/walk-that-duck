@@ -1,0 +1,56 @@
+.container {
+  /* left: -2px; */
+  /* grid-column: span 4; */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  background: none;
+  z-index: -10;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%); 
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0.5rem;
+  height: auto;
+  transform: translateY(0%);
+  transition: 300ms;
+  /* transition-delay: 200ms; */
+}
+
+.queenConfirmCard {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-bottom: 0.5rem;
+}
+
+.imageContainer {
+  position: relative;
+  /* overflow: hidden; */
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  margin-right: 1rem;
+
+}
+
+.imageContainer img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: var(--br);
+}
+
+.queenInfo {
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.queenPoints {
+  font-weight: 500;
+}

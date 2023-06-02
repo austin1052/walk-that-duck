@@ -1,11 +1,31 @@
+.container {
+  max-height: 100px;
+  transition: max-height 500ms;
+  border-bottom: var(--border1);
+  animation: slide-up 1500ms both;
+}
+
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.menuOpen {
+  max-height: 1000px;
+}
+
 .listItem {
   display: flex;
   align-items: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: var(--border1);
+  padding: var(--marginDesktop) var(--marginMobile);
+  transition: 300ms;
 }
 
 .number {
@@ -29,7 +49,7 @@
 }
 
 .houseContainer {
-  margin-left: 2rem;
+  margin: var(--marginDesktop);
   position: relative;
   transform: translateY(7px);
 }
@@ -40,7 +60,7 @@
   content: "haus of";
   position: absolute;
   color: var(--lightOpaque);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   font-style: italic;
   top: -19px;
@@ -48,7 +68,8 @@
 }
 
 .houseName {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   margin-right: 1rem;
 }
 
@@ -58,7 +79,7 @@
   padding-right: 0.5rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-  width: 70px;
+  width: 80px;
   font-weight: 700;
   text-align: center;
   border-radius: var(--br);
@@ -66,7 +87,60 @@
   background: var(--accent);
 }
 
+/**************************/
+/* Player Queen Cards */
+
+.playerQueensContainer {
+  margin: 0 var(--marginMobile) var(--marginDesktop);
+  padding: calc(var(--marginMobile) / 2) var(--marginMobile);
+  background: var(--midOpaque);
+  border-radius: var(--br);
+}
+
+.categoryHeader {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;;
+}
+
+.queenInfoCardContainer {
+  margin: 0 var(--marginMobile);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cross {
+  position: absolute;
+  top: 50%;
+  height: 5px;
+  width: 70px;
+  background: rgb(200, 70, 70);
+  z-index: 10;
+  /* transform: rotate(45deg); */
+  transform: translate(-10px, -6px) rotate(45deg);
+}
+
+.cross::after {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 70px;
+  background: rgb(200, 70, 70);
+  z-index: 20;
+  transform: rotate(90deg);
+}
+
 @media only screen and (min-width: 768px) {
+
+  .listItem {
+    padding: var(--marginMobile);
+  }
+
+  .listItem:hover {
+    background: var(--lightOpaque);
+  }
+
   .name::after {
     content: '';
     display: inline-block;
@@ -79,6 +153,10 @@
 
   .name {
     margin-right: 2rem;
+    margin-left: 2rem;
+  }
+
+  .houseContainer {
     margin-left: 2rem;
   }
 }

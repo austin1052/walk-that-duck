@@ -7,6 +7,7 @@
  border-radius: var(--br);
  grid-template-rows: auto auto;
  box-shadow: var(--bs);
+ /* max-height is set using .imageContainer height (70px) + padding x2 (8px)  + border x2 (2px) = 90px */
  max-height: 90px;
  transition: max-height 400ms;
  background: var(--lightOpaque);
@@ -79,7 +80,7 @@
   width: 30px;
   top: -8px;
   left: -8px;
-  z-index: 30;
+  z-index: 20;
   background: var(--greenSolid);
   border-radius: var(--br);
   display: flex;

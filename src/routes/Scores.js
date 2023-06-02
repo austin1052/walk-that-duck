@@ -11,7 +11,7 @@ import { MobileContext } from "../context/MobileContext.js"
 import { getQueensTotalPoints } from '../utils/scores.js';
 
 export default function Scores({ allQueensData }) {
-  const [allQueens, setAllQueens] = useState()
+  // const [allQueens, setAllQueens] = useState()
   const [playerInfo, setPlayerInfo] = useState()
   const [playerPoints, setPlayerPoints] = useState()
   const [topThreePlayers, setTopThreePlayers] = useState([])
@@ -35,7 +35,7 @@ export default function Scores({ allQueensData }) {
         const data = snapshot.val()
         const queenData = getQueensTotalPoints(data, queens)
         calculatePlayerPoints(queenData)
-        setAllQueens(queenData)
+        // setAllQueens(queenData)
       }
     })
 
@@ -69,12 +69,14 @@ export default function Scores({ allQueensData }) {
         const updatedPlayer = { ...playerInfo[id], ...playerPoints[id] }
         combinedPlayers[id] = updatedPlayer
       })
+
+      // turns object {playerID: {data}} into array ["playerID", {data}]
       const array = Object.entries(combinedPlayers)
       const sortedData = mergeSort(array)
       setTopThreePlayers(sortedData.slice(0, 3))
       setOtherPlayers(sortedData.slice(3))
     }
-  }, [playerInfo, playerPoints, isMobile, allQueens])
+  }, [playerInfo, playerPoints, isMobile]) //allQueens
 
   // gets players queen list, calculates their total points, sets playerPoints
   function calculatePlayerPoints(queenData) {
@@ -83,9 +85,12 @@ export default function Scores({ allQueensData }) {
       const players = {};
       if (snapshot.exists()) {
         const data = snapshot.val()
+        // data = array of {queenId: multiplier}
         const playerIDs = Object.keys(data)
         playerIDs.forEach(playerID => {
           let playerTotalPoints = 0
+          // const playerQueens = []
+          const playerQueens = { winner: [], slayers: [], players: [] }
           if (queenData === undefined) {
             playerTotalPoints = 0
           } else {
@@ -96,25 +101,38 @@ export default function Scores({ allQueensData }) {
                 playerTotalPoints = 0
               } else {
                 const multiplier = queens[queenID]
-                const queenTotalPoints = queenData[queenID].totalPoints
-                const adjustedPoints = queenTotalPoints * multiplier
+                const { name, active, totalPoints } = queenData[queenID]
+                // const queenTotalPoints = queenData[queenID].totalPoints
+                const adjustedPoints = totalPoints * multiplier
                 playerTotalPoints += adjustedPoints
+                if (multiplier === 1.5) {
+                  playerQueens.winner.push({ points: adjustedPoints, name, id: queenID, active })
+                }
+                if (multiplier === 1.25) {
+                  playerQueens.slayers.push({ points: adjustedPoints, name, id: queenID, active })
+                }
+                if (multiplier === 1) {
+                  playerQueens.players.push({ points: adjustedPoints, name, id: queenID, active })
+                }
               }
             })
           }
-          players[playerID] = { totalPoints: playerTotalPoints }
+          players[playerID] = { totalPoints: playerTotalPoints, playerQueens }
         })
         setPlayerPoints(players)
       }
     })
   }
 
+  let animationDelay = 0;
+
+
   return (
     <div className="page-container">
       <div className={styles.container}>
-        {/* <div className={styles.headerContainer}>
-          <h1>Top Three</h1>
-        </div> */}
+        <div className={styles.headerContainer}>
+          <h1>Condragulations</h1>
+        </div>
         {/* <div className={styles.topThreeContainer}>
           {
             (topThreePlayers && !isMobile) &&
@@ -129,23 +147,25 @@ export default function Scores({ allQueensData }) {
           {
             (topThreePlayers) &&
             topThreePlayers.map((player, idx) => {
+              animationDelay += 100
               idx = idx + 1
               return (
-                <List player={player} key={player[0]} idx={idx} isMobile={isMobile} />
+                <List player={player} key={player[0]} idx={idx} isMobile={isMobile} delay={animationDelay} />
               )
             })
           }
         </div>
-        {/* <div className={styles.headerContainer}>
-          <h1>Losers</h1>
-        </div> */}
+        <div className={styles.headerContainer} style={{ animationDelay: "400ms" }}>
+          <h1>Sashay Away</h1>
+        </div>
         <div className={styles.listContainer}>
           {
             (otherPlayers) &&
             otherPlayers.map((player, idx) => {
+              animationDelay += 100
               idx = idx + 4;
               return (
-                <List player={player} key={player[0]} idx={idx} isMobile={isMobile} />
+                <List player={player} key={player[0]} idx={idx} isMobile={isMobile} delay={animationDelay} />
               )
             })
           }

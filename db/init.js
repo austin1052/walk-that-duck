@@ -23,6 +23,7 @@ function createInitialQueens(queenData) {
     })
     set(ref(db, currentSeason + '/queenPoints/' + queenID), {
       [firstEpisodeDate]: 0
+      // 1: 0
     })
   }
   )
