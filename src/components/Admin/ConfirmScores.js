@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import QueenInfoCard from "../QueenInfoCard.js"
 import { updateWeeklyPoints } from '../../utils/db.js'
 import { useLocation } from 'react-router-dom'
-import { parseDate } from '../../utils/index.js'
 import styles from '../../styles/Admin/ConfirmScores.module.css'
 
 export default function ConfirmScores({ setConfirmScoresOpen, setAllQueens, allQueens }) {
