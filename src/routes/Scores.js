@@ -11,7 +11,6 @@ import { MobileContext } from "../context/MobileContext.js"
 import { getQueensTotalPoints } from '../utils/scores.js';
 
 export default function Scores({ allQueensData }) {
-  // const [allQueens, setAllQueens] = useState()
   const [playerInfo, setPlayerInfo] = useState()
   const [playerPoints, setPlayerPoints] = useState()
   const [topThreePlayers, setTopThreePlayers] = useState([])
@@ -29,32 +28,75 @@ export default function Scores({ allQueensData }) {
       }
     })
 
-    const queensRef = ref(db, currentSeason + "/queenPoints/")
-    onValue(queensRef, (snapshot) => {
-      if (snapshot.exists()) {
-        const data = snapshot.val()
-        const queenData = getQueensTotalPoints(data, queens)
-        calculatePlayerPoints(queenData)
-        // setAllQueens(queenData)
-      }
-    })
+    if (playerInfo !== undefined) {
 
-  }, [allQueensData])
+      const queensRef = ref(db, currentSeason + "/queenPoints/")
+      onValue(queensRef, (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val()
+          const queenData = getQueensTotalPoints(data, queens)
+          calculatePlayerPoints(queenData)
+        }
+      })
+    }
+
+    function calculatePlayerPoints(queenData) {
+      const playerQueensRef = ref(db, currentSeason + "/playerQueens/")
+
+      onValue(playerQueensRef, (snapshot) => {
+        const players = {};
+        if (snapshot.exists()) {
+          const data = snapshot.val()
+          // data = array of {queenId: multiplier}
+          const playerIDs = Object.keys(data)
+          playerIDs.forEach(playerID => {
+            let queenPoints = 0
+            // const playerQueens = []
+            const playerQueens = { winner: [], slayers: [], players: [] }
+            if (queenData !== undefined) {
+              const queens = data[playerID]
+              const queenIDs = Object.keys(queens)
+              queenIDs.forEach(queenID => {
+                if (queenData[queenID] !== undefined) {
+                  const multiplier = queens[queenID]
+                  const { name, active, totalPoints } = queenData[queenID]
+                  const adjustedPoints = totalPoints * multiplier
+                  queenPoints += adjustedPoints
+                  const cardData = { points: adjustedPoints, name, id: queenID, active }
+
+                  // create list of queens for dropdown
+                  if (multiplier === 1.5) {
+                    playerQueens.winner.push(cardData)
+                  }
+                  if (multiplier === 1.25) {
+                    playerQueens.slayers.push(cardData)
+                  }
+                  if (multiplier === 1) {
+                    playerQueens.players.push(cardData)
+                  }
+
+                }
+              })
+            }
+            const bonusPoints = playerInfo[playerID]?.bonusPoints || 0;
+            const totalPoints = queenPoints + bonusPoints
+            players[playerID] = { playerQueens, queenPoints, bonusPoints, totalPoints }
+          })
+          setPlayerPoints(players)
+        }
+      })
+      // }
+    }
+
+  }, [allQueensData, playerInfo])
 
   // gets and sets playerInfo
   useEffect(() => {
-    const players = {}
+    let players
     const playersRef = ref(db, currentSeason + "/players/")
     onValue(playersRef, (snapshot) => {
       if (snapshot.exists()) {
-        const data = snapshot.val()
-        const playerIDs = Object.keys(data)
-        playerIDs.forEach(id => {
-          const { name, houseName } = data[id]
-          players[id] = {
-            name, houseName
-          }
-        })
+        players = snapshot.val()
       }
       setPlayerInfo(players)
     })
@@ -78,60 +120,13 @@ export default function Scores({ allQueensData }) {
     }
   }, [playerInfo, playerPoints, isMobile]) //allQueens
 
-  // gets players queen list, calculates their total points, sets playerPoints
-  function calculatePlayerPoints(queenData) {
-    const playerQueensRef = ref(db, currentSeason + "/playerQueens/")
-    onValue(playerQueensRef, (snapshot) => {
-      const players = {};
-      if (snapshot.exists()) {
-        const data = snapshot.val()
-        // data = array of {queenId: multiplier}
-        const playerIDs = Object.keys(data)
-        playerIDs.forEach(playerID => {
-          let playerTotalPoints = 0
-          // const playerQueens = []
-          const playerQueens = { winner: [], slayers: [], players: [] }
-          if (queenData === undefined) {
-            playerTotalPoints = 0
-          } else {
-            const queens = data[playerID]
-            const queenIDs = Object.keys(queens)
-            queenIDs.forEach(queenID => {
-              if (queenData[queenID] === undefined) {
-                playerTotalPoints = 0
-              } else {
-                const multiplier = queens[queenID]
-                const { name, active, totalPoints } = queenData[queenID]
-                // const queenTotalPoints = queenData[queenID].totalPoints
-                const adjustedPoints = totalPoints * multiplier
-                playerTotalPoints += adjustedPoints
-                if (multiplier === 1.5) {
-                  playerQueens.winner.push({ points: adjustedPoints, name, id: queenID, active })
-                }
-                if (multiplier === 1.25) {
-                  playerQueens.slayers.push({ points: adjustedPoints, name, id: queenID, active })
-                }
-                if (multiplier === 1) {
-                  playerQueens.players.push({ points: adjustedPoints, name, id: queenID, active })
-                }
-              }
-            })
-          }
-          players[playerID] = { totalPoints: playerTotalPoints, playerQueens }
-        })
-        setPlayerPoints(players)
-      }
-    })
-  }
-
   let animationDelay = 0;
-
 
   return (
     <div className="page-container">
       <div className={styles.container}>
         <div className={styles.headerContainer}>
-          <h1>Condragulations</h1>
+          <h1>Top 3 All Stars</h1>
         </div>
         {/* <div className={styles.topThreeContainer}>
           {

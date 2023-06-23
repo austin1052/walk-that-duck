@@ -39,8 +39,22 @@ export function getQueensTotalPoints(data, queens) {
 }
 
 export function calculatePlayerPoints(queenData) {
+  console.log("AHHH");
+  const playersRef = ref(db, currentSeason + "/players/")
   const playerQueensRef = ref(db, currentSeason + "/playerQueens/")
+
+  let playerData;
+
+  onValue(playersRef, (snapshot) => {
+    if (snapshot.exists()) {
+      playerData = snapshot.val();
+    }
+  }
+  )
+  console.log("Hey", playerData);
+
   const players = {};
+
   onValue(playerQueensRef, (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val()
@@ -70,9 +84,46 @@ export function calculatePlayerPoints(queenData) {
       })
     }
   })
+
   console.log(players);
-  return players
+  return "hey"
 }
+
+// export function calculatePlayerPoints(queenData) {
+//   const playerQueensRef = ref(db, currentSeason + "/playerQueens/")
+//   const players = {};
+//   onValue(playerQueensRef, (snapshot) => {
+//     if (snapshot.exists()) {
+//       const data = snapshot.val()
+//       // data = array of {queenId: multiplier}
+//       const playerIDs = Object.keys(data)
+//       playerIDs.forEach(playerID => {
+//         let playerTotalPoints = 0
+//         const playerQueens = []
+//         if (queenData === undefined) {
+//           playerTotalPoints = 0
+//         } else {
+//           const queens = data[playerID]
+//           const queenIDs = Object.keys(queens)
+//           queenIDs.forEach(queenID => {
+//             if (queenData[queenID] === undefined) {
+//               playerTotalPoints = 0
+//             } else {
+//               const multiplier = queens[queenID]
+//               const queenTotalPoints = queenData[queenID].totalPoints
+//               const adjustedPoints = queenTotalPoints * multiplier
+//               playerTotalPoints += adjustedPoints
+//               playerQueens[queenID] = adjustedPoints
+//             }
+//           })
+//         }
+//         players[playerID] = { totalPoints: playerTotalPoints, playerQueens }
+//       })
+//     }
+//   })
+//   console.log(players);
+//   return players
+// }
 
 export function getPlayerInfo() {
   const players = {}

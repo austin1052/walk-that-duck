@@ -6,7 +6,7 @@ import styles from '../../styles/Scores/List.module.css';
 export default function ScoreList({ player, idx, isMobile, delay }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const { name, houseName, totalPoints, playerQueens } = player[1];
+  const { name, houseName, bonusPoints, totalPoints, playerQueens } = player[1];
   // console.log(player);
 
   const options = Object.keys(playerQueens)
@@ -47,7 +47,7 @@ export default function ScoreList({ player, idx, isMobile, delay }) {
               <div key={option}>
                 <h2 className={styles.categoryHeader}>{option}</h2>
                 {playerQueens[option].map((queen, i) => (
-                  <div className={styles.queenInfoCardContainer}>
+                  <div className={styles.queenInfoCardContainer} key={i}>
                     {
                       !queen.active &&
                       <div className={styles.cross}></div>
@@ -61,7 +61,13 @@ export default function ScoreList({ player, idx, isMobile, delay }) {
               </div>
             ))
           }
+          {/* <div className={styles.playerQueensContainer}> */}
+          <div className={styles.queenInfoCardContainer}>
+            <h2 className={styles.categoryHeader}>assassin bonus</h2>
+            <div className={styles.queenPoints}>{bonusPoints}</div>
+          </div>
         </div>
+        // </div>
       }
     </div>
   );

@@ -10,6 +10,8 @@
   visibility: hidden;
   opacity: 0;
   transform: translateY(-100%); 
+  color: var(--dark);
+
 }
 
 .visible {
@@ -31,18 +33,25 @@
   padding-right: 0.5rem;
   padding-top: 0.3rem;
   padding-bottom: 0.45rem;
+  color: var(--accent);
   font-size: 0.8rem;
   font-weight: 500;
   border: var(--border1);
   border-radius: var(--br);
+  border-color: var(--lightOpaque);
   text-transform: lowercase;
   cursor: pointer;
-  border-color: var(--lightOpaque);
   box-shadow: var(--bs);
 }
 
 .container > div:hover {
   transition: border 400ms;
+}
+
+.container > div.disabled {
+  color: var(--midOpaque);
+  pointer-events: none;
+  border-color: var(--midOpaque);
 }
 
 .button {
@@ -158,11 +167,6 @@
   width: 2px;
   background: var(--light);
   transform: rotate(-90deg);
-}
-
-.disabled {
-  color: var(--lightOpaque);
-  pointer-events: none;
 }
 
 .span2 {

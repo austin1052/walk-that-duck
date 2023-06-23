@@ -4,7 +4,7 @@ import styles from '../styles/Scores/QueenInfoCard.module.css'
 
 const QueenInfoCard = ({ queen }) => {
 
-  console.log(queen);
+  // console.log(queen);
   return (
     <>
       <div className={styles.queenConfirmCard}>

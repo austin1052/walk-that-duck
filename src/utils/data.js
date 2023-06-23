@@ -41,8 +41,6 @@ export const pointButtonStyles = {
 export const currentSeason = "AS-8"
 // export const currentSeason = "AS-8-DEV"
 
-
-
 export const options = {
   playerOptions: {
     category: "player",

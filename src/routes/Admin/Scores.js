@@ -74,10 +74,11 @@ export default function UpdateScores({ allQueensData }) {
   return (
     <>
       <AdminHeader allQueens={allQueens} setAllQueens={setAllQueens} setConfirmScoresOpen={setConfirmScoresOpen} />
-      <div className="page-container background-pink">
+      {/* background-pink */}
+      <div className="page-container">
         {
           confirmScoresOpen &&
-          <ConfirmScores setConfirmScoresOpen={setConfirmScoresOpen} allQueens={allQueens} />
+          <ConfirmScores setConfirmScoresOpen={setConfirmScoresOpen} allQueens={allQueens} setAllQueens={setAllQueens} />
         }
         <div className={styles.container}>
           <div className={styles.columnContainer}>
