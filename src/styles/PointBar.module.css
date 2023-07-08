@@ -11,7 +11,6 @@
   opacity: 0;
   transform: translateY(-100%); 
   color: var(--dark);
-
 }
 
 .visible {
@@ -41,7 +40,6 @@
   border-color: var(--lightOpaque);
   text-transform: lowercase;
   cursor: pointer;
-  box-shadow: var(--bs);
 }
 
 .container > div:hover {

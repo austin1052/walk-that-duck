@@ -17,6 +17,7 @@ export default function Scores({ allQueensData }) {
   const [otherPlayers, setOtherPlayers] = useState([])
   const isMobile = useContext(MobileContext)
 
+
   // creates queen list, gets list and their total points
   useEffect(() => {
     const queenIDs = Object.keys(allQueensData)
