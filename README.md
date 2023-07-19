@@ -46,3 +46,43 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 - [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
 - [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
 - [Next.js Auth Helpers Docs](https://supabase.com/docs/guides/auth/auth-helpers/nextjs)
+
+
+## Git Processes
+
+### Building a new branch
+```bash
+    # Switch to main to get the latest changes from other people
+    git checkout main
+    git pull
+    git checkout -b "NEW_BRANCH_NAME"
+```
+### Committing your changes to this branch
+```bash
+    # Stage your changes (include them in your next commit)
+    # . represents the current folder
+    git add .
+    git commit -m "Explaination of the changes you made in past tense"
+    # eg. git commit -m "added the first schema to the database"
+    git push -u origin YOUR_BRANCH_NAME
+    # eg. git push -u origin standings-page
+    # if branch already exists on origin instead write
+    git push
+```
+
+### Submitting PR
+First you want to make sure your branch has all of the changes that are in main.
+```bash
+
+    git checkout main
+    git pull
+    git checkout YOUR_BRANCH
+    git merge main
+    # If there is a merge conflict it should appear now
+    # In that case, open the conflicting files in vsCode and make any edits to get it working with all of the code mashed together.
+    # When done editing/saving each of the conflict files run the below commands while in your branch.
+    git add .
+    git commit -m "sorted merge-conflict issues"
+    git push
+```
+On github, go to the branch that you would like to merge to main. Click create PR. Compare with each other before merging any breaking changes.
