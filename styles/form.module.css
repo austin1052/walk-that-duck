@@ -1,0 +1,89 @@
+/* button styles are in globals.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+  width: min(400px, 100%);
+}
+
+.form label {
+  padding: 0 0.3rem 0.5rem;
+}
+
+.form input {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--light);
+  border: none;
+  border: var(--border2);
+  border-radius: var(--br);
+}
+
+.form input::placeholder {
+  color: var(--mid);
+  font-size: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .form input {
+    background: var(--black);
+  }
+}
+
+/****************/
+
+
+/******** AUTH FORMS ********/
+
+.authForm {
+  margin-top: 5rem;
+}
+
+.loginButton {
+  align-self: end;
+  margin-top: 1rem;
+}
+
+.passwordAlert {
+  color: red;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.footer button {
+  color: var(--accent);
+  background: none;
+  transition: 300ms;
+  border: none;
+}
+
+.footer button:hover {
+  transform: scale(1.05);
+  text-shadow: var(--black) 0px 4px 4px;
+}
+
+.footer button:hover:after {
+  display: none;
+  font-size: 1.1rem;
+}
+
+
+
+/****************/
