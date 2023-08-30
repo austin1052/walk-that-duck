@@ -57,7 +57,7 @@ export default function Login() {
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await supabase.auth.signUp({
+    await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -69,7 +69,7 @@ export default function Login() {
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = await supabase.auth.signInWithPassword({
+    await supabase.auth.signInWithPassword({
       email,
       password,
     });

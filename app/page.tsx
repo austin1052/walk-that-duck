@@ -1,16 +1,18 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { getSession } from "@/supabase/utils";
 import Link from "next/link";
 import LogoutButton from "../components/LogoutButton";
 
 export default async function Index() {
-  const supabase = createServerComponentClient({ cookies });
+  const session = await getSession();
+  console.log(session);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // const supabase = createServerComponentClient({ cookies });
 
-  console.log(user);
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+
+  // console.log(user);
 
   return (
     <div>
@@ -18,9 +20,9 @@ export default async function Index() {
         <div>
           <div />
           <div>
-            {user ? (
+            {session ? (
               <div>
-                Hey, {user.email}!
+                Hey, {session.user.email}!
                 <LogoutButton />
               </div>
             ) : (

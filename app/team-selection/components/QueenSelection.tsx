@@ -12,7 +12,7 @@ export default function QueenSelection() {
   const numberOfQueens = queens.length;
   const placements = [...Array(numberOfQueens).keys()];
 
-  async function handleSubmit(e: any) {
+  function handleSubmit(e: any) {
     console.log("submit");
   }
 
