@@ -61,11 +61,6 @@
   transform: skewX(-15deg);
 }
 
-/* .logInButton > span {
-transition: 300ms;
-color: var(--light);
-} */
-
 .logInButton:hover > span {
   transform: skewX(15deg);
 }
