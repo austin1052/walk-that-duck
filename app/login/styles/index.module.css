@@ -30,9 +30,6 @@
   padding: 0 0.25rem 0.5rem;
 }
 
-.inputContainer:has(label[for="name"]) {
-  /* transform: translateY(40px); */
-}
 
 .form input {
   position: relative;
