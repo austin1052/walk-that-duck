@@ -23,7 +23,7 @@ export default function Login() {
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const handleSetView = (e: MouseEvent) => {
+  const handleSetView = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     view === "sign-in" ? setView("sign-up") : setView("sign-in");
     const isVisible = !showSignUp;
@@ -32,14 +32,14 @@ export default function Login() {
     }
     setClassName(
       showSignUp
-        ? ` ${styles.inputContainer} ${styles.slideUp}`
-        : ` ${styles.inputContainer} ${styles.slideDown}`
+        ? `${styles.inputContainer} ${styles.slideUp}`
+        : `${styles.inputContainer} ${styles.slideDown}`
     );
     setLabelClassName(showSignUp ? "" : `${styles.labelSlideUp}`);
     setButtonClassName(
       showSignUp
-        ? ` ${styles.loginButton} ${styles.buttonSlideUp}`
-        : ` ${styles.loginButton} ${styles.buttonSlideDown}`
+        ? `${styles.loginButton} ${styles.buttonSlideUp}`
+        : `${styles.loginButton} ${styles.buttonSlideDown}`
     );
   };
 
@@ -47,7 +47,7 @@ export default function Login() {
     animationRef.current?.addEventListener(
       "animationend",
       () => {
-        className === ` ${styles.inputContainer} ${styles.slideDown}`
+        className === `${styles.inputContainer} ${styles.slideDown}`
           ? setShowSignUp(true)
           : setShowSignUp(false);
       },

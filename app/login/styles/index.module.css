@@ -31,7 +31,7 @@
 }
 
 .inputContainer:has(label[for="name"]) {
-  transform: translateY(40px);
+  /* transform: translateY(40px); */
 }
 
 .form input {
@@ -59,6 +59,20 @@
   margin-top: 1rem;
   width: 92px;
 }
+
+.logInButton:hover {
+  transform: skewX(-15deg);
+}
+
+/* .logInButton > span {
+transition: 300ms;
+color: var(--light);
+} */
+
+.logInButton:hover > span {
+  transform: skewX(15deg);
+}
+
 
 .passwordAlert {
   color: red;
@@ -104,32 +118,32 @@
   .footer button:hover {
     transform: scale(1.05);
   }
+
 }
 
 /******** ANIMATIONS ********/
 
 .slideDown {
-  animation: slide-down 400ms both, opacity-1 400ms both;
+  animation: slide-down 400ms both, opacity-1 400ms backwards;
   animation-delay: 100ms;
 }
 
 .slideUp {
-  animation: slide-up 400ms both, opacity-0 400ms both;
+  animation: slide-up 400ms both, opacity-0 400ms forwards;
 }
 
 .buttonSlideDown {
-  animation: slide-down 400ms both;
+  animation: slide-down 400ms;
 }
 
 .buttonSlideUp {
-  animation: slide-up 400ms both;
+  animation: slide-up 400ms;
   animation-delay: 100ms;
 }
 
 .labelSlideUp {
   animation: label-slide-up 400ms both;
-  animation-delay: 200ms;
-
+  animation-delay: 100ms;
 }
 
 @keyframes slide-up {
@@ -138,13 +152,13 @@
   }
   
   100% {
-    transform: translateY(-92px);
+    transform: translateY(-94px);
   }
 }
 
 @keyframes slide-down {
   0% {
-    transform: translateY(-80px);
+    transform: translateY(-94px);
   }
 
   100% {
