@@ -1,0 +1,187 @@
+/* button styles are in globals.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(400px, 100%);
+  font-weight: 600;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  position: relative;
+  z-index: 10;
+  padding: 0 0.25rem 0.5rem;
+}
+
+.inputContainer:has(label[for="name"]) {
+  transform: translateY(40px);
+}
+
+.form input {
+  position: relative;
+  z-index: 20;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.5rem;
+  background: var(--white);
+  border: var(--border1);
+  border-color: var(--mid);
+  border-radius: var(--br);
+}
+
+.form input::placeholder {
+  color: var(--mid);
+}
+
+.form input:focus {
+ border-color: var(--accent);
+}
+
+.loginButton {
+  align-self: end;
+  margin-top: 1rem;
+  width: 92px;
+}
+
+.passwordAlert {
+  color: red;
+}
+
+.footer {
+  position: fixed;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.footer button {
+  color: var(--dark);
+  background: none;
+  transition: 300ms;
+  padding: 0 4px;
+  margin-left: 0.5rem;
+  border-radius: 0;
+  border-bottom: 2px solid var(--accent);
+}
+
+.footer button:hover {
+  transform: scale(1.025);
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .form input {
+    background: var(--black);
+  }
+  
+  .footer button {
+    color: var(--light);
+    /* border: none; */
+  }
+
+  .footer button:hover {
+    transform: scale(1.05);
+  }
+}
+
+/******** ANIMATIONS ********/
+
+.slideDown {
+  animation: slide-down 400ms both, opacity-1 400ms both;
+  animation-delay: 100ms;
+}
+
+.slideUp {
+  animation: slide-up 400ms both, opacity-0 400ms both;
+}
+
+.buttonSlideDown {
+  animation: slide-down 400ms both;
+}
+
+.buttonSlideUp {
+  animation: slide-up 400ms both;
+  animation-delay: 100ms;
+}
+
+.labelSlideUp {
+  animation: label-slide-up 400ms both;
+  animation-delay: 200ms;
+
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0px);
+  }
+  
+  100% {
+    transform: translateY(-92px);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-80px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes label-slide-up {
+  0% {
+    transform: translateY(40px);
+  }
+  
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes opacity-0 {
+  0% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0; 
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes opacity-1 {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

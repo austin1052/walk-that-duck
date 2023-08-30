@@ -9,54 +9,45 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [showSignUp, setShowSignUp] = useState(false);
-  const [className, setClassName] = useState(`${styles.inputContainer}`);
-  const [labelClassName, setLabelClassName] = useState("");
+  const [showName, setShowName] = useState(false);
+  const [className, setClassName] = useState("");
+  // const [incorrectPassword, setIncorrectPasword] = useState(false);
+  const [view, setView] = useState("sign-up");
 
-  const [buttonClassName, setButtonClassName] = useState(
-    `${styles.loginButton}`
-  );
-  const [view, setView] = useState("sign-in");
-
-  const animationRef = useRef<HTMLDivElement>(null);
-
+  const nameInputRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const handleSetView = (e: MouseEvent) => {
+  const handleSetView = (e) => {
     e.preventDefault();
-    view === "sign-in" ? setView("sign-up") : setView("sign-in");
-    const isVisible = !showSignUp;
+    // setShowName(!showName);
+    const isVisible = !showName;
+    console.log({ isVisible });
     if (isVisible) {
-      setShowSignUp(isVisible);
+      console.log("set show name");
+      setShowName(isVisible);
     }
-    setClassName(
-      showSignUp
-        ? ` ${styles.inputContainer} ${styles.slideUp}`
-        : ` ${styles.inputContainer} ${styles.slideDown}`
-    );
-    setLabelClassName(showSignUp ? "" : `${styles.labelSlideUp}`);
-    setButtonClassName(
-      showSignUp
-        ? ` ${styles.loginButton} ${styles.buttonSlideUp}`
-        : ` ${styles.loginButton} ${styles.buttonSlideDown}`
-    );
+    setClassName(showName ? "slideUp" : "slideDown");
   };
 
   useEffect(() => {
-    animationRef.current?.addEventListener(
+    console.log(view);
+    nameInputRef.current?.addEventListener(
       "animationend",
       () => {
-        className === ` ${styles.inputContainer} ${styles.slideDown}`
-          ? setShowSignUp(true)
-          : setShowSignUp(false);
+        view === "sign-in" ? setView("sign-up") : setView("sign-in");
       },
       { once: true }
     );
-  }, [className, setShowSignUp]);
+  }, [className]);
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // if (password !== verifyPassword) {
+    //   setVerifyPassword("");
+    //   setIncorrectPasword(true);
+    //   return;
+    // }
     const res = await supabase.auth.signUp({
       email,
       password,
@@ -64,6 +55,7 @@ export default function Login() {
         emailRedirectTo: `${location.origin}/auth/callback`,
       },
     });
+    console.log(res);
     setView("check-email");
   };
 
@@ -73,12 +65,13 @@ export default function Login() {
       email,
       password,
     });
+    console.log(result);
     router.push("/");
     router.refresh();
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.authForm}`}>
       {view === "check-email" ? (
         <p>
           Check <span>{email}</span> to continue signing up
@@ -97,7 +90,6 @@ export default function Login() {
               placeholder="you@example.com"
             />
           </div>
-
           <div className={styles.inputContainer}>
             <label htmlFor="password">Password</label>
             <input
@@ -108,40 +100,52 @@ export default function Login() {
               placeholder="••••••••"
             />
           </div>
-
-          {showSignUp ? (
+          {view === "sign-in" && (
             <>
-              <div className={className} ref={animationRef}>
-                <label htmlFor="name" className={labelClassName}>
-                  Your Name
-                </label>
+              <button className={styles.loginButton}>
+                <span>Sign In</span>
+              </button>
+              <p className={styles.footer}>
+                Don't have an account?
+                <button
+                  className={styles.signUpButton}
+                  onClick={(e) => handleSetView(e)}
+                >
+                  Sign Up Now
+                </button>
+              </p>
+            </>
+          )}
+          {view === "sign-up" && (
+            <>
+              <div
+                className={`${styles.inputContainer} ${className}`}
+                ref={nameInputRef}
+              >
+                <label htmlFor="name">Your Name</label>
                 <input
+                  // type="password"
                   name="name"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   placeholder="Sasha Colby"
                 />
               </div>
-              <button className={buttonClassName}>
-                <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
-              </button>
-            </>
-          ) : (
-            <>
+              {/* {incorrectPassword && (
+                <div className={styles.passwordAlert}>
+                  Passwords do not match
+                </div>
+              )} */}
               <button className={styles.loginButton}>
-                <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
+                <span>Sign Up</span>
               </button>
+              <p className={styles.footer}>
+                Already have an account?
+                <button onClick={(e) => handleSetView(e)}>Sign In</button>
+                {/* onClick={() => setView("sign-in")} */}
+              </p>
             </>
           )}
-
-          <p className={styles.footer}>
-            {view === "sign-up"
-              ? "Already have an account?"
-              : "Don't have an account?"}
-            <button onClick={(e) => handleSetView(e)}>
-              {view === "sign-up" ? "Sign In" : "Sign Up"}
-            </button>
-          </p>
         </form>
       )}
     </div>
