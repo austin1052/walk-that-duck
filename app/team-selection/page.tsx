@@ -1,16 +1,11 @@
-import QueenSelection from "./components/QueenSelection";
-import { cookies } from "next/headers";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { getSession } from "@/supabase/utils";
 import { redirect } from "next/navigation";
+import QueenSelection from "./components/QueenSelection";
 
 export default async function TeamSelection() {
-  const supabase = createServerComponentClient({ cookies });
+  const session = await getSession();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
+  if (!session) {
     // This route can only be accessed by authenticated users.
     // Unauthenticated users will be redirected to the `/login` route.
     redirect("/login");
