@@ -4,15 +4,7 @@ import LogoutButton from "../components/LogoutButton";
 
 export default async function Index() {
   const session = await getSession();
-  console.log(session);
-
-  // const supabase = createServerComponentClient({ cookies });
-
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser();
-
-  // console.log(user);
+  console.log({ session });
 
   return (
     <div>
