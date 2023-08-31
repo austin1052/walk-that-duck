@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+}
+
+.queenPlacement > div {
+  height: var(--imageHeight);
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.sortableList {
+  width: 100%;
+}
+
+.listItem {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.dragIcon {
+  color: var(--accent);
+  font-size: 2rem;
+}
