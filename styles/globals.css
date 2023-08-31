@@ -5,10 +5,12 @@
   --white: #f3dceb;
   --dark: rgba(22,22,22,1);
   --mid: rgb(50, 50, 50);
-  --midOpaque: rgba(90, 90, 90, 0.1);
+  --midOpaque: rgba(90, 90, 90, 0.2);
   --light: rgb(255, 207, 231);
   --lightOpaque: rgb(255, 207, 231, 0.2);
-  --accent: rgba(220, 125, 180);
+  /* --accent: rgba(220, 125, 180); */
+  --accent: rgb(198, 96, 155);
+
   --accentOpaque: rgba(220, 125, 180, 0.6);
   --br: 4px;
   --border1: 1px solid var(--lightOpaque);
@@ -26,11 +28,12 @@
   --silverBorder: rgb(130, 130, 130, 0.5);
   --orange: rgb(232, 164, 69, 0.2);
   --orangeBorder: rgb(232, 164, 69, 0.5);
+  --orangeSolid: rgb(232, 164, 69);
   --yellow: rgb(255, 240, 14, 0.2);
   --yellowBorder: rgb(255, 240, 14, 0.5);
   --blue: rgb(39, 221, 239, 0.2);
   --blueBorder: rgb(39, 221, 239, 0.4);
-  --marginMobile: 0.50rem;
+  --marginMobile: 0.75rem;
   --marginDesktop: 1rem;
   --imageHeight: 55px;
 }
@@ -45,7 +48,6 @@
 
 body {
   background-color: var(--light);
-
 }
 
 body * {
@@ -56,6 +58,7 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: var(--marginMobile);
   background: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
 }
 
@@ -76,18 +79,11 @@ button {
   transition: 300ms;
 }
 
-button:hover {
-  transform: skewX(-15deg);
-}
-
  button > span {
   transition: 300ms;
   color: var(--light);
  }
 
-button:hover > span {
-  transform: skewX(15deg);
-}
 
 @media (prefers-color-scheme: dark) {
 
@@ -114,5 +110,20 @@ button:hover > span {
   
   button:hover:after {
     border: 2px solid var(--dark);
+  }
+}
+
+@media (width > 768px) {
+  button:hover {
+    transform: skewX(-15deg);
+  }
+  
+   button > span {
+    transition: 300ms;
+    color: var(--light);
+   }
+  
+  button:hover > span {
+    transform: skewX(15deg);
   }
 }
