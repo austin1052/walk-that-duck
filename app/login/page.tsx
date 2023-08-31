@@ -207,19 +207,6 @@ export default function Login() {
               >
                 <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
               </button>
-
-              {/* {isLoading ? (
-                <div className={styles.duck}>🦆</div>
-              ) : (
-                <button className={styles.loginButton}>
-                  {isLoading ? (
-                    <span>LOADING</span>
-                  ) : (
-                    <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
-                  )}
-                  <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
-                </button>
-              )} */}
             </>
           )}
 
@@ -241,9 +228,3 @@ export default function Login() {
     </div>
   );
 }
-
-// className={
-//   isLoading
-//     ? `${styles.loginButton} ${styles.loading}`
-//     : `${styles.loginButton}`
-// }
