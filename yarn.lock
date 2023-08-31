@@ -2,15 +2,46 @@
 # yarn lockfile v1
 
 
-"@next/env@13.4.12":
-  "integrity" "sha512-RmHanbV21saP/6OEPBJ7yJMuys68cIf8OBBWd7+uj40LdpmswVAwe1uzeuFyUsd6SfeITWT3XnQfn6wULeKwDQ=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.4.12.tgz"
-  "version" "13.4.12"
+"@dnd-kit/accessibility@^3.0.0":
+  "integrity" "sha512-HXRrwS9YUYQO9lFRc/49uO/VICbM+O+ZRpFDe9Pd1rwVv2PCNkRiTZRdxrDgng/UkvdC3Re9r2vwPpXXrWeFzg=="
+  "resolved" "https://registry.npmjs.org/@dnd-kit/accessibility/-/accessibility-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "tslib" "^2.0.0"
 
-"@next/swc-darwin-arm64@13.4.12":
-  "integrity" "sha512-deUrbCXTMZ6ZhbOoloqecnUeNpUOupi8SE2tx4jPfNS9uyUR9zK4iXBvH65opVcA/9F5I/p8vDXSYbUlbmBjZg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.12.tgz"
-  "version" "13.4.12"
+"@dnd-kit/core@^6.0.7", "@dnd-kit/core@^6.0.8":
+  "integrity" "sha512-lYaoP8yHTQSLlZe6Rr9qogouGUz9oRUj4AHhDQGQzq/hqaJRpFo65X+JKsdHf8oUFBzx5A+SJPUvxAwTF2OabA=="
+  "resolved" "https://registry.npmjs.org/@dnd-kit/core/-/core-6.0.8.tgz"
+  "version" "6.0.8"
+  dependencies:
+    "@dnd-kit/accessibility" "^3.0.0"
+    "@dnd-kit/utilities" "^3.2.1"
+    "tslib" "^2.0.0"
+
+"@dnd-kit/sortable@^7.0.2":
+  "integrity" "sha512-wDkBHHf9iCi1veM834Gbk1429bd4lHX4RpAwT0y2cHLf246GAvU2sVw/oxWNpPKQNQRQaeGXhAVgrOl1IT+iyA=="
+  "resolved" "https://registry.npmjs.org/@dnd-kit/sortable/-/sortable-7.0.2.tgz"
+  "version" "7.0.2"
+  dependencies:
+    "@dnd-kit/utilities" "^3.2.0"
+    "tslib" "^2.0.0"
+
+"@dnd-kit/utilities@^3.2.0", "@dnd-kit/utilities@^3.2.1":
+  "integrity" "sha512-OOXqISfvBw/1REtkSK2N3Fi2EQiLMlWUlqnOK/UpOISqBZPWpE6TqL+jcPtMOkE8TqYGiURvRdPSI9hltNUjEA=="
+  "resolved" "https://registry.npmjs.org/@dnd-kit/utilities/-/utilities-3.2.1.tgz"
+  "version" "3.2.1"
+  dependencies:
+    "tslib" "^2.0.0"
+
+"@next/env@13.4.19":
+  "integrity" "sha512-FsAT5x0jF2kkhNkKkukhsyYOrRqtSxrEhfliniIq0bwWbuXLgyt3Gv0Ml+b91XwjwArmuP7NxCiGd++GGKdNMQ=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-13.4.19.tgz"
+  "version" "13.4.19"
+
+"@next/swc-darwin-arm64@13.4.19":
+  "integrity" "sha512-vv1qrjXeGbuF2mOkhkdxMDtv9np7W4mcBtaDnHU+yJG+bBwa6rYsYSCI/9Xm5+TuF5SbZbrWO6G1NfTh1TMjvQ=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.19.tgz"
+  "version" "13.4.19"
 
 "@prisma/engines@5.1.0":
   "integrity" "sha512-HqaFsnPmZOdMWkPq6tT2eTVTQyaAXEDdKszcZ4yc7DGMBIYRP6j/zAJTtZUG9SsMV8FaucdL5vRyxY/p5Ni28g=="
@@ -186,7 +217,7 @@
   "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001517.tgz"
   "version" "1.0.30001517"
 
-"client-only@0.0.1":
+"client-only@^0.0.1", "client-only@0.0.1":
   "integrity" "sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA=="
   "resolved" "https://registry.npmjs.org/client-only/-/client-only-0.0.1.tgz"
   "version" "0.0.1"
@@ -327,12 +358,12 @@
   "resolved" "https://registry.npmjs.org/next-tick/-/next-tick-1.1.0.tgz"
   "version" "1.1.0"
 
-"next@latest":
-  "integrity" "sha512-eHfnru9x6NRmTMcjQp6Nz0J4XH9OubmzOa7CkWL+AUrUxpibub3vWwttjduu9No16dug1kq04hiUUpo7J3m3Xw=="
-  "resolved" "https://registry.npmjs.org/next/-/next-13.4.12.tgz"
-  "version" "13.4.12"
+"next@^13.4.19":
+  "integrity" "sha512-HuPSzzAbJ1T4BD8e0bs6B9C1kWQ6gv8ykZoRWs5AQoiIuqbGHHdQO7Ljuvg05Q0Z24E2ABozHe6FxDvI6HfyAw=="
+  "resolved" "https://registry.npmjs.org/next/-/next-13.4.19.tgz"
+  "version" "13.4.19"
   dependencies:
-    "@next/env" "13.4.12"
+    "@next/env" "13.4.19"
     "@swc/helpers" "0.5.1"
     "busboy" "1.6.0"
     "caniuse-lite" "^1.0.30001406"
@@ -341,15 +372,15 @@
     "watchpack" "2.4.0"
     "zod" "3.21.4"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "13.4.12"
-    "@next/swc-darwin-x64" "13.4.12"
-    "@next/swc-linux-arm64-gnu" "13.4.12"
-    "@next/swc-linux-arm64-musl" "13.4.12"
-    "@next/swc-linux-x64-gnu" "13.4.12"
-    "@next/swc-linux-x64-musl" "13.4.12"
-    "@next/swc-win32-arm64-msvc" "13.4.12"
-    "@next/swc-win32-ia32-msvc" "13.4.12"
-    "@next/swc-win32-x64-msvc" "13.4.12"
+    "@next/swc-darwin-arm64" "13.4.19"
+    "@next/swc-darwin-x64" "13.4.19"
+    "@next/swc-linux-arm64-gnu" "13.4.19"
+    "@next/swc-linux-arm64-musl" "13.4.19"
+    "@next/swc-linux-x64-gnu" "13.4.19"
+    "@next/swc-linux-x64-musl" "13.4.19"
+    "@next/swc-win32-arm64-msvc" "13.4.19"
+    "@next/swc-win32-ia32-msvc" "13.4.19"
+    "@next/swc-win32-x64-msvc" "13.4.19"
 
 "node-fetch@^2.6.12":
   "integrity" "sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g=="
@@ -406,7 +437,7 @@
   dependencies:
     "@prisma/engines" "5.1.0"
 
-"react-dom@^18.2.0", "react-dom@18.2.0":
+"react-dom@^18.2.0", "react-dom@>=16.8.0", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -414,7 +445,12 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
-"react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@18.2.0":
+"react-icons@^4.10.1":
+  "integrity" "sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.10.1.tgz"
+  "version" "4.10.1"
+
+"react@*", "react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
@@ -455,12 +491,20 @@
   dependencies:
     "client-only" "0.0.1"
 
+"swr@^2.2.2":
+  "integrity" "sha512-CbR41AoMD4TQBQw9ic3GTXspgfM9Y8Mdhb5Ob4uIKXhWqnRLItwA5fpGvB7SmSw3+zEjb0PdhiEumtUvYoQ+bQ=="
+  "resolved" "https://registry.npmjs.org/swr/-/swr-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "client-only" "^0.0.1"
+    "use-sync-external-store" "^1.2.0"
+
 "tr46@~0.0.3":
   "integrity" "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw=="
   "resolved" "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   "version" "0.0.3"
 
-"tslib@^2.4.0":
+"tslib@^2.0.0", "tslib@^2.4.0":
   "integrity" "sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz"
   "version" "2.6.1"
@@ -494,6 +538,11 @@
   dependencies:
     "escalade" "^3.1.1"
     "picocolors" "^1.0.0"
+
+"use-sync-external-store@^1.2.0":
+  "integrity" "sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA=="
+  "resolved" "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz"
+  "version" "1.2.0"
 
 "utf-8-validate@^5.0.2":
   "integrity" "sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ=="
