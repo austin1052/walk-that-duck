@@ -187,6 +187,8 @@ export default function Login() {
                 />
               </div>
               <button
+                // id="login-button"
+                data-testid="login-button"
                 className={
                   isLoading
                     ? `${classNames.button} ${styles.loading}`
@@ -199,6 +201,8 @@ export default function Login() {
           ) : (
             <>
               <button
+                // id="login-button"
+                data-testid="login-button"
                 className={
                   isLoading
                     ? `${styles.loginButton} ${styles.loading}`

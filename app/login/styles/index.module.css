@@ -188,6 +188,10 @@
     animation: shake 300ms;
   }
 
+  .inputContainer:has(.error) {
+    animation: shake 300ms;
+  }
+
   @keyframes shake {
     0%, 100% {
       transform: translateX(0);
