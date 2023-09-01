@@ -6,6 +6,9 @@ export default defineConfig({
       framework: "next",
       bundler: "webpack",
     },
+    env: {
+      // appURL: "http://localhost:3000/"
+    }
   },
 
   e2e: {

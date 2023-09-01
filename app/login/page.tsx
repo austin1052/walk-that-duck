@@ -98,6 +98,8 @@ export default function Login() {
       password,
     });
 
+    console.log(res);
+
     if (res.error) {
       setError(true);
       setIsLoading(false);
@@ -125,14 +127,13 @@ export default function Login() {
         message = "";
         break;
     }
-    console.log({ message });
     (input as HTMLInputElement).setCustomValidity(message);
   };
 
   return (
     <div className={styles.container}>
       {view === "check-email" ? (
-        <p>
+        <p data-testid="check-email">
           Check <span>{email}</span> to continue signing up
         </p>
       ) : (
@@ -143,7 +144,12 @@ export default function Login() {
           <div className={classNames.input}>
             <div className={styles.label}>
               <label htmlFor="email">Email</label>
-              <div className={styles.invalidMessage}>Enter a valid email</div>
+              <div
+                className={styles.invalidMessage}
+                data-testid="invalid-email-error"
+              >
+                Enter a valid email
+              </div>
             </div>
             <input
               required
@@ -160,11 +166,17 @@ export default function Login() {
           <div className={classNames.input}>
             <div className={styles.label}>
               <label htmlFor="password">Password</label>
-              <div className={styles.invalidMessage}>
+              <div
+                className={styles.invalidMessage}
+                data-testid="invalid-password-error"
+              >
                 Password must be 8 characters
               </div>
               {error && (
-                <div className={`${styles.invalidMessage} ${styles.error}`}>
+                <div
+                  data-testid="incorrect-password-error"
+                  className={`${styles.invalidMessage} ${styles.error}`}
+                >
                   Password is incorrect
                 </div>
               )}
@@ -201,8 +213,7 @@ export default function Login() {
                 />
               </div>
               <button
-                // id="login-button"
-                data-testid="login-button"
+                data-testid="log-in-button"
                 className={
                   isLoading
                     ? `${classNames.button} ${styles.loading}`
@@ -215,8 +226,7 @@ export default function Login() {
           ) : (
             <>
               <button
-                // id="login-button"
-                data-testid="login-button"
+                data-testid="log-in-button"
                 className={
                   isLoading
                     ? `${styles.loginButton} ${styles.loading}`
@@ -233,6 +243,7 @@ export default function Login() {
               ? "Already have an account?"
               : "Don't have an account?"}
             <button
+              data-testid="switch-view-button"
               onClick={(e) => {
                 setError(false);
                 handleSetView(e);

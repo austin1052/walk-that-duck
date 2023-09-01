@@ -15,7 +15,7 @@ export default function LogoutButton() {
   };
 
   return (
-    <button className="" onClick={signOut}>
+    <button data-testid="log-out-button" onClick={signOut}>
       <span>Log Out</span>
     </button>
   );
