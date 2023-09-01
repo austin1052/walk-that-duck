@@ -84,6 +84,14 @@ button {
   color: var(--light);
  }
 
+ button:hover {
+  transform: skewX(-15deg);
+}
+
+button:hover > span {
+  transform: skewX(15deg);
+}
+
 
 @media (prefers-color-scheme: dark) {
 

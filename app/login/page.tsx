@@ -1,19 +1,21 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Loader from "@/components/Loader";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import styles from "./styles/index.module.css";
+
+type View = "sign-in" | "sign-up" | "check-email";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
-  const [view, setView] = useState("sign-in");
+  const [view, setView] = useState<View>("sign-in");
   const [showSignUp, setShowSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
   const [classNames, setClassNames] = useState({
     name: `${styles.inputContainer}`,
     label: "",
@@ -22,15 +24,25 @@ export default function Login() {
   });
 
   const animationRef = useRef<HTMLDivElement>(null);
+
   const router = useRouter();
   const supabase = createClientComponentClient();
 
   const handleSetView = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // when showSignUp === false and sign-up components are hidden
+    // showSignUp needs to be set to true so slide down animations can start
+
+    // when when showSignUp === true and sign-up components are visible
+    // slide up animation needs to run first before showSignUp is set to false
+    // class names are changed inside this function and will trigger animations
+    // view is changed in this function and will trigger useEffect to set showSignUp false
+
     e.preventDefault();
+
     view === "sign-in" ? setView("sign-up") : setView("sign-in");
-    const isVisible = !showSignUp;
-    if (isVisible) {
-      setShowSignUp(isVisible);
+
+    if (!showSignUp) {
+      setShowSignUp(!showSignUp);
     }
 
     const name = showSignUp
@@ -54,11 +66,13 @@ export default function Login() {
     animationRef.current?.addEventListener(
       "animationend",
       () => {
-        view === "sign-up" ? setShowSignUp(true) : setShowSignUp(false);
+        if (view === "sign-in") {
+          setShowSignUp(false);
+        }
       },
       { once: true }
     );
-  }, [classNames, setShowSignUp]);
+  }, [view]);
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,7 +107,9 @@ export default function Login() {
     }
   };
 
-  const setValidityMessage = (e: any, type?: "email" | "password") => {
+  type FormInputs = "email" | "password";
+
+  const setValidityMessage = (e: any, type?: FormInputs) => {
     const input = e.target;
     if (input.value === "") return;
     if (type === "password" && view === "sign-in") return;
@@ -109,6 +125,7 @@ export default function Login() {
         message = "";
         break;
     }
+    console.log({ message });
     (input as HTMLInputElement).setCustomValidity(message);
   };
 
@@ -126,7 +143,7 @@ export default function Login() {
           <div className={classNames.input}>
             <div className={styles.label}>
               <label htmlFor="email">Email</label>
-              <div className={styles.errorMessage}>Enter a valid email</div>
+              <div className={styles.invalidMessage}>Enter a valid email</div>
             </div>
             <input
               required
@@ -143,14 +160,11 @@ export default function Login() {
           <div className={classNames.input}>
             <div className={styles.label}>
               <label htmlFor="password">Password</label>
-              <div className={styles.errorMessage}>
+              <div className={styles.invalidMessage}>
                 Password must be 8 characters
               </div>
               {error && (
-                <div
-                  className={styles.errorMessage}
-                  style={{ display: "block" }}
-                >
+                <div className={`${styles.invalidMessage} ${styles.error}`}>
                   Password is incorrect
                 </div>
               )}
