@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Header from "@/components/Header";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import styles from "./styles/index.module.css";
+import styles from "./styles/login.module.css";
 
 type View = "sign-in" | "sign-up" | "check-email";
 
