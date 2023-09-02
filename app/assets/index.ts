@@ -11,7 +11,9 @@ import monicabeverlyhillz from "@/app/assets/monicabeverlyhillz.webp";
 import mrskashadavis from "@/app/assets/mrskashadavis.webp";
 import nayshalopez from "@/app/assets/nayshalopez.webp";
 
-// import alexismichelle from "@/app/assets/alexismichelle.webp"
+import logoLight from "@/app/assets/logo-light-bold.png";
+import logoDark from "@/app/assets/logo-dark-bold.png";
+import { StaticImageData } from "next/image"
 
 export const queenImages: any = {
   alexismichelle,
@@ -26,4 +28,9 @@ export const queenImages: any = {
   monicabeverlyhillz,
   mrskashadavis,
   nayshalopez
+}
+
+export const logo: {light: StaticImageData, dark: StaticImageData} = {
+  light: logoLight,
+    dark: logoDark
 }

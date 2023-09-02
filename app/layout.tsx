@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import BackgroundLines from "@/components/BackgroundLines";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <BackgroundLines />
         <main className="">{children}</main>
       </body>
     </html>
