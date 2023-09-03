@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Header from "@/components/Header";
+import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import styles from "./styles/login.module.css";
 
 type View = "sign-in" | "sign-up" | "check-email";
-
+let hi;
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -108,6 +108,11 @@ export default function Login() {
       router.push("/");
       router.refresh();
     }
+  };
+
+  const handleSwitchView = (e: any) => {
+    setError(false);
+    handleSetView(e);
   };
 
   type FormInputs = "email" | "password";
@@ -213,7 +218,7 @@ export default function Login() {
                   placeholder="Sasha Colby"
                 />
               </div>
-              <button
+              <div
                 data-testid="log-in-button"
                 className={
                   isLoading
@@ -221,12 +226,15 @@ export default function Login() {
                     : `${classNames.button}`
                 }
               >
-                <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
-              </button>
+                <Button
+                  text={view === "sign-up" ? "Sign Up" : "Sign In"}
+                  style="solid"
+                />
+              </div>
             </>
           ) : (
             <>
-              <button
+              <div
                 data-testid="log-in-button"
                 className={
                   isLoading
@@ -234,25 +242,29 @@ export default function Login() {
                     : `${styles.loginButton}`
                 }
               >
-                <span>{view === "sign-up" ? "Sign Up" : "Sign In"}</span>
-              </button>
+                <Button
+                  text={view === "sign-up" ? "Sign Up" : "Sign In"}
+                  style="solid"
+                />
+              </div>
             </>
           )}
 
-          <p className={styles.footer}>
+          <div className={styles.footer}>
             {view === "sign-up"
               ? "Already have an account?"
               : "Don't have an account?"}
-            <button
+            <div
+              className={styles.switchViewButton}
               data-testid="switch-view-button"
-              onClick={(e) => {
-                setError(false);
-                handleSetView(e);
-              }}
             >
-              {view === "sign-up" ? "Sign In" : "Sign Up"}
-            </button>
-          </p>
+              <Button
+                text={view === "sign-up" ? "Sign In" : "Sign Up"}
+                onClick={handleSwitchView}
+                style="underline"
+              />
+            </div>
+          </div>
         </form>
       )}
     </div>

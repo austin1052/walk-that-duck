@@ -1,5 +1,76 @@
+.solid {
+  color: var(--dark);
+  padding: 0.5rem 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  background: linear-gradient(0deg, var(--dark) 0%, var(--mid) 100%);
+  cursor: pointer;
+}
+
 .button {
-  padding: 0 1rem;
-  background-color: var(--accent);
+  border: none;
   width: fit-content;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 300ms;
+}
+
+ .button span {
+  transition: 300ms;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+ }
+
+ .solid span {
+  color: var(--light);
+ }
+
+
+ .underline {
+  color: var(--dark); 
+  background: none;
+  text-decoration: none;
+  padding: 0 4px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.underline:hover {
+  transform: scale(1.025);
+}
+
+
+ @media (prefers-color-scheme: dark) {
+
+  .solid {
+    background: var(--accent);
+    color: var(--dark);
+  }
+
+  .solid span {
+    color: var(--dark);
+  }
+
+  .underline span {
+    color: var(--light);
+  }
+
+}
+
+/******** Desktop Styles ********/
+
+@media (width > 768px) {
+  .solid:hover {
+    transform: skewX(-15deg);
+  }
+  
+   .solid span {
+    transition: 300ms;
+   }
+  
+  .solid:hover span {
+    transform: skewX(15deg);
+  }
 }

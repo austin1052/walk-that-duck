@@ -1,8 +1,9 @@
-.backgroundLines {
+.background {
   --height: 10px;
   --time: 15s;
   width: 100%;
-  position: absolute;
+  position: fixed;
+  z-index: 10;
   top: 0;
   bottom: 0;
   left: 0;
@@ -13,29 +14,53 @@
 .line {
   width: 2px;
   height: 2px;
-  border-radius: 2px;
+  border-radius: 100%;
   background-color: var(--dark);
-  /* background: linear-gradient(0deg,rgba(0,0,0,0) 0%,rgba(243,220,235,1) 50%, rgba(0,0,0,0) 100%); */
   position: absolute;
   bottom: 1rem;
+}
+
+.lineFall {
+  animation: fall var(--time) linear infinite backwards;
+}
+
+.lineRise {
   animation: rise var(--time) linear infinite backwards;
 }
 
 .middleLine {
   position: absolute;
-  top: 8rem;
+  top: 0rem;
   left: 50%;
-  z-index: 0;
   width: 1px;
   min-height: 100%;
   margin: 0 auto;
   background-color: var(--white);
-  background: linear-gradient(0deg, var(--accentOpaque) 0%, var(--white) 100%);
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--light) 10%, var(--accentOpaque) 45%, var(--light) 80%, rgba(0,0,0,0) 100%);
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(var(--height));
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
 }
 
 @keyframes rise {
   0% {
-    transform: translateY(110px);
+    transform: translateY(50px);
     opacity: 1;
   }
 
@@ -55,11 +80,10 @@
 @media (prefers-color-scheme: dark) {
   .line {
     background-color: var(--accent);
-    /* background: rgb(243,220,235);
-    background: linear-gradient(0deg, rgba(243,220,235,0) 0%, var(--accent) 50%, rgba(255,200,228,0) 100%); */
   }
 
   .middleLine {
-    background: linear-gradient(0deg, var(--accentOpaque) 0%, var(--dark) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--dark) 10%, var(--accentOpaque) 60%, var(--dark) 90%, rgba(0,0,0,0) 100%);
+
   }
 }

@@ -1,6 +1,7 @@
 
 
 /* general button styles are in globals.css */
+
 /* animations are inside media query at the bottom of this file */
 
 .container {
@@ -9,12 +10,12 @@
   margin-top: 1rem;
   overflow: hidden;
   /* position: fixed; */
-  z-index: 10;
+  /* z-index: 10; */
   width: 100%;
 }
 
 .form {
-  --color: var(--midOpaque);
+  --color: var(--mid);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -58,49 +59,31 @@
   padding: 0.5rem 0.5rem;
   background: var(--white);
   /* border: none; */
-  border-radius: var(--br);
+  /* border-radius: var(--br); */
   border: 2px solid var(--color);
   outline: none;
 }
 
 .form input::placeholder {
   color: var(--accentOpaque);
-  
 }
 
 .form input:focus-visible {
  border: 2px solid var(--accent);
 }
 
-.signUpInput {
-  --color: var(--mid);
-}
-
 .signUpInput:has(:invalid) {
   --color: var(--redSolid);
 }
 
-.signUpInput:has(:focus) {
-  --color: var(--orangeSolid);
-}
-
 .signUpInput:has(:placeholder-shown) {
-  --color: var(--midOpaque);
+  --color: var(--mid);
 }
 
-.loginButton {
-  align-self: center;
-  margin-top: 2rem;
+.loginButton > button {
   width: 100%;
+  margin-top: 2.4rem;
 }
-
-/* .logInButton:hover {
-  transform: skewX(-15deg);
-}
-
-.logInButton:hover > span {
-  transform: skewX(15deg);
-} */
 
 .loading {
   opacity: 0.4;
@@ -115,6 +98,7 @@
 
 .footer {
   position: fixed;
+  /* z-index: 20; */
   bottom: 3rem;
   left: 0;
   right: 0;
@@ -125,7 +109,11 @@
   margin-top: 3rem;
 }
 
-.footer button {
+.switchViewButton {
+  margin-left: 0.5rem;
+}
+
+/* .switchViewButton {
   color: var(--dark);
   background: none;
   transition: 300ms;
@@ -135,9 +123,9 @@
   border-bottom: 2px solid var(--accent);
 }
 
-.footer button:hover {
+.switchViewButton:hover {
   transform: scale(1.025);
-}
+} */
 
 @media (prefers-color-scheme: dark) {
 
@@ -157,12 +145,12 @@
     --color: var(--mid);
   }
 
-  .footer button {
+  .switchViewButton {
     color: var(--light);
     /* border: none; */
   }
 
-  .footer button:hover {
+  .switchViewButton:hover {
     transform: scale(1.05);
   }
 

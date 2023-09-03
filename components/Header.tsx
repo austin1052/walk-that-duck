@@ -9,7 +9,9 @@ import styles from "../styles/Header.module.css";
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState<boolean>(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    window !== undefined
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+      : false
   );
 
   useEffect(() => {
@@ -18,6 +20,7 @@ export default function Header() {
       e.matches ? setDarkMode(true) : setDarkMode(false)
     );
   }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
