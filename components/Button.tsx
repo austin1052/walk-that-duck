@@ -8,8 +8,6 @@ interface ButtonProps {
   onClick?: (e: any) => void;
 }
 
-// type ButtonProps = LinkButton | ActionButton;
-
 export default function Button({ text, style, href, onClick }: ButtonProps) {
   const className =
     style === "underline"
