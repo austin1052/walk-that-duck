@@ -1,27 +1,34 @@
 import { getSession } from "@/supabase/utils";
-import Link from "next/link";
-import LogoutButton from "../components/LogoutButton";
-import styles from "../styles/Header.module.css";
+import LogoutButton from "@/components/LogoutButton";
 import Header from "@/components/Header";
-import BackgroundLines from "@/components/BackgroundLines";
+import Button from "@/components/Button";
+import styles from "@/styles/LandingPage.module.css";
+import "../styles/globals.css";
 
 export default async function Index() {
   const session = await getSession();
   return (
     <>
-      <Header />
       {session ? (
         <div>
           Hey, {session.user.email}!
           <LogoutButton />
         </div>
       ) : (
-        <div className={`${styles.loginButton}`}>
-          <Link href="/login" className="button">
-            <span>Login</span>
-          </Link>
+        <div className={styles.loginButton}>
+          <Button href={"/login"} text={"log in"} style="underline" />
         </div>
       )}
+      <Header />
+      <h1 className={`${styles.title} page-title`}>
+        <div>
+          <span className="title-text">a </span>
+          <span className="">drag race </span>
+        </div>
+        <div>
+          <span className="title-text">fantasy league</span>
+        </div>
+      </h1>
     </>
   );
 }

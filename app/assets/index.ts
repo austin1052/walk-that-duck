@@ -10,9 +10,15 @@ import lalari from "@/app/assets/lalari.webp";
 import monicabeverlyhillz from "@/app/assets/monicabeverlyhillz.webp";
 import mrskashadavis from "@/app/assets/mrskashadavis.webp";
 import nayshalopez from "@/app/assets/nayshalopez.webp";
+import logoLight from "@/app/assets/logo2-light.png";
+import logoDark from "@/app/assets/logo2-dark.png";
 
-import logoLight from "@/app/assets/logo-light-bold.png";
-import logoDark from "@/app/assets/logo-dark-bold.png";
+// import logoLight from "@/app/assets/logo-light-bold.png";
+// import logoDark from "@/app/assets/logo-dark-bold.png";
+
+// import logoDark from "@/app/assets/logo2-accent.png";
+
+
 import { StaticImageData } from "next/image"
 
 export const queenImages: any = {

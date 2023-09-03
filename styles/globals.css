@@ -22,7 +22,7 @@
   --red: rgb(200, 70, 70, 0.2);
   --redBorder: rgb(200, 70, 70, 0.5);
   --redSolid: rgb(200, 70, 70);
-  --gold: rgb(251, 211, 9, 0.2);
+  /* --gold: rgb(251, 211, 9, 0.2);
   --goldBorder: rgb(251, 211, 9, 0.4);
   --silver: rgb(130, 130, 130, 0.2);
   --silverBorder: rgb(130, 130, 130, 0.5);
@@ -32,7 +32,7 @@
   --yellow: rgb(255, 240, 14, 0.2);
   --yellowBorder: rgb(255, 240, 14, 0.5);
   --blue: rgb(39, 221, 239, 0.2);
-  --blueBorder: rgb(39, 221, 239, 0.4);
+  --blueBorder: rgb(39, 221, 239, 0.4); */
   --marginMobile: 0.75rem;
   --marginDesktop: 1rem;
   --imageHeight: 55px;
@@ -49,15 +49,14 @@
 }
 
 body {
-  background-color: var(--light);
   min-height: 100vh;
-  position: relative;
+  background: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
+  background-color: var(--white);
 }
 
 body * {
   color: var(--dark);
 }
-
 
 @media (prefers-color-scheme: dark) {
   body * {
@@ -66,84 +65,64 @@ body * {
 }
 
 main {
+  position: relative;
+  z-index: 20;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--marginMobile);
-  background: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
 }
 
-h1 {
-  font-family: "calgary-script-ot", sans-serif;
-  font-weight: 400;
+h1, h1 * {
+  color: var(--dark);
+  font-weight: 600;
   font-style: normal;
-  color: var(--accent);
-  font-size: 3rem;
-}
-
-button, .button {
-  width: fit-content;
-  font-size: 1rem;
-  color: var(--light);
-  font-weight: 800;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  /* background-color: var(--dark); */
-  background: linear-gradient(0deg, var(--dark) 0%, var(--mid) 100%);
-  border: none;
-  border-radius: var(--br);
-  cursor: pointer;
+  letter-spacing: 2px;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 300ms;
+  z-index: 10;
 }
 
- button span, .button span {
-  transition: 300ms;
-  color: var(--light);
-  font-weight: 800;
- }
+.page-title > div {
+  margin-bottom: -1rem;
+}
 
+.title-accent {
+  color: var(--accent);
+}
+
+.title-text {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+
+.page-title::after {
+  /* need to set width and transform inside components css module */
+  content: "";
+  height: 0.75rem;
+  border-radius: 2px;
+  background-color: var(--accentOpaque);
+}
 
 @media (prefers-color-scheme: dark) {
 
   body {
-    background-color: var(--accent);
-  }
-
-  main {
     background: linear-gradient(0deg, var(--black) 0%, var(--dark) 100%);
+    background-color: var(--dark);
   }
 
-  button, .button {
-    background: var(--accent);
-    border: none;
+  h1, h1 * {
+    color: var(--accent);
   }
 
-  button span, .button span {
-    color: var(--dark);
+  .page-title::after {
+    background-color: var(--mid);
   }
-  
-  button:hover:after, .button:hover:after {
-    border: 2px solid var(--dark);
+
+  .title-text {
+    color: var(--light);
   }
 }
 
 /******** Desktop Styles ********/
-
-@media (width > 768px) {
-  button:hover, .button:hover {
-    transform: skewX(-15deg);
-  }
-  
-   button span, .button span {
-    transition: 300ms;
-   }
-  
-  button:hover span, .button:hover span {
-    transform: skewX(15deg);
-  }
-}

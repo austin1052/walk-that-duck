@@ -1,7 +1,8 @@
 .header {
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  margin-top: 3rem;
+  /* padding: 1rem 0; */
   position: relative;
   z-index: 10;
 }
@@ -9,7 +10,7 @@
 .logo {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 40%;
   justify-content: center;
 }
 
@@ -28,18 +29,6 @@
   border-radius: 2px;
   background-color: var(--accentOpaque);
   /* background: linear-gradient(0deg, var(--dark) 0%, var(--mid) 100%); */
-}
-
-.loginButton {
-  width: 100%;
-  position: fixed;
-  z-index: 20;
-  bottom: 3rem;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media (prefers-color-scheme: dark) {
