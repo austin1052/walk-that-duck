@@ -1,0 +1,119 @@
+.nav {
+  --button-font-size: 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem var(--marginMobile) ;
+  background-color: var(--whiteOpaque);
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 2px 15px 5px var(--whiteOpaque);
+  transform: translateY(-2px);
+  transition: 400ms;
+}
+
+.hidden {
+  transform: translateY(-110%);
+}
+
+.navMenuContainer {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--background-gradient-light);
+}
+
+/******** ANIMATIONS ********/
+
+.perspective {
+  perspective: 250px;
+}
+
+.hide {
+  animation: hide 300ms linear both;
+  transform-origin: center;
+  transform-style: preserve-3d; 
+}
+
+.show {
+  animation: show 300ms linear both;
+  transform-origin: center;
+  transform-style: preserve-3d; 
+}
+
+.fadeIn {
+  animation: fade-in 300ms;
+}
+
+.fadeOut {
+  animation: fade-out 300ms forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) translateZ(0px);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateX(130px) translateY(10px) translateZ(-100px) rotate3d(0, 1, 0, 90deg);
+  }
+
+  100% {
+    transform: translateX(0px) translateY(20px) translateZ(-180px) rotate3d(0, 1, 0, 180deg);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateX(0px) translateY(20px) translateZ(-180px) rotate3d(0, 1, 0, 180deg);
+  }
+
+  50% {
+    transform: translateX(130px) translateY(10px) translateZ(-100px) rotate3d(0, 1, 0, 90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) translateZ(0px);
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .nav {
+   background-color: var(--darkOpaque);
+   box-shadow: 0px 3px 20px 5px var(--dark);
+  }
+
+  .navMenuContainer {
+    background: var(--background-gradient-dark);
+  }
+}

@@ -1,7 +1,4 @@
 
-
-/* general button styles are in globals.css */
-
 /* animations are inside media query at the bottom of this file */
 
 .container {
@@ -58,10 +55,11 @@
   margin: 1rem 0;
   padding: 0.5rem 0.5rem;
   background: var(--white);
-  /* border: none; */
-  /* border-radius: var(--br); */
   border: 2px solid var(--color);
+  border-radius: 2px;
   outline: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 2px;
 }
 
 .form input::placeholder {
@@ -83,6 +81,8 @@
 .loginButton > button {
   width: 100%;
   margin-top: 2.4rem;
+  /* this stops the animation flickering before the view is changed */
+  transform: translateZ(0);
 }
 
 .loading {
@@ -112,20 +112,6 @@
 .switchViewButton {
   margin-left: 0.5rem;
 }
-
-/* .switchViewButton {
-  color: var(--dark);
-  background: none;
-  transition: 300ms;
-  padding: 0 4px;
-  margin-left: 0.5rem;
-  border-radius: 0;
-  border-bottom: 2px solid var(--accent);
-}
-
-.switchViewButton:hover {
-  transform: scale(1.025);
-} */
 
 @media (prefers-color-scheme: dark) {
 
@@ -199,9 +185,13 @@
     animation-delay: 100ms;
   }
   
-  .labelSlideUp {
-    animation: label-slide-up 400ms both;
+  .labelSlideDown {
+    animation: label-slide-down 400ms both;
     animation-delay: 100ms;
+  }
+
+  .labelSlideUp {
+    animation: label-slide-up 400ms forwards;
   }
 
   .duck {
@@ -211,6 +201,20 @@
 
   @keyframes label-slide-up {
     0% {
+      transform: translateY(0px);
+    }
+
+    100% {
+      transform: translateY(90px);
+    }
+  }
+
+  @keyframes label-slide-down {
+    0% {
+      transform: translateY(40px);
+    }
+
+    25% {
       transform: translateY(40px);
     }
     

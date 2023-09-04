@@ -1,0 +1,12 @@
+/* logo width is set using prop "width" in Logo component */
+
+.logo {
+  --logo-width: 100%;
+  width: var(--logo-width);
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  padding-bottom: 0rem;
+}

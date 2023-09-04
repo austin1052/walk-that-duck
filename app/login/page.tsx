@@ -5,9 +5,10 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import styles from "./styles/login.module.css";
+import "@/styles/globals.css";
 
 type View = "sign-in" | "sign-up" | "check-email";
-let hi;
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +26,7 @@ export default function Login() {
   });
 
   const animationRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
   const supabase = createClientComponentClient();
@@ -38,10 +40,13 @@ export default function Login() {
     // class names are changed inside this function and will trigger animations
     // view is changed in this function and will trigger useEffect to set showSignUp false
 
+    //
+
     e.preventDefault();
 
     view === "sign-in" ? setView("sign-up") : setView("sign-in");
 
+    // if showSignUp === false, set it to true
     if (!showSignUp) {
       setShowSignUp(!showSignUp);
     }
@@ -50,7 +55,9 @@ export default function Login() {
       ? `${styles.inputContainer} ${styles.slideUp}`
       : `${styles.signUpInput} ${styles.inputContainer} ${styles.slideDown}`;
 
-    const label = showSignUp ? "" : `${styles.labelSlideUp}`;
+    const label = showSignUp
+      ? `${styles.labelSlideUp}`
+      : `${styles.labelSlideDown}`;
 
     const input = showSignUp
       ? `${styles.inputContainer}`
@@ -70,6 +77,7 @@ export default function Login() {
         if (view === "sign-in") {
           setShowSignUp(false);
         }
+        inputRef?.current?.focus();
       },
       { once: true }
     );
@@ -166,6 +174,7 @@ export default function Login() {
               placeholder="you@example.com"
               onInvalid={(e) => setValidityMessage(e, "email")}
               onInput={(e) => setValidityMessage(e)}
+              ref={inputRef}
             />
           </div>
 

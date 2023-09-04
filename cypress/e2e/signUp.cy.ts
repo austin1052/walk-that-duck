@@ -66,7 +66,7 @@ describe('Sign up user', () => {
       })
     }).as("sign-up")
     
-    cy.get(emailInput).type("testaccount@walkthatduck.com")
+    cy.get(emailInput).type("austin1052@icloud.com")
     cy.get(passwordInput).type("mypassword")
     cy.get(nameInput).type("Mistress Isabel Brooks")
     cy.get(loginButton).click()

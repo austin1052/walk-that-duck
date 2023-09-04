@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "./Button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 
@@ -15,8 +16,8 @@ export default function LogoutButton() {
   };
 
   return (
-    <button data-testid="log-out-button" onClick={signOut}>
-      <span>Log Out</span>
-    </button>
+    <div data-testid="log-out-button" className="">
+      <Button onClick={signOut} text={"log out"} style="underline" />
+    </div>
   );
 }
