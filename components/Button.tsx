@@ -9,18 +9,24 @@ interface ButtonProps {
 }
 
 export default function Button({ text, style, href, onClick }: ButtonProps) {
-  const className =
-    style === "underline"
-      ? `${styles.underline} ${styles.button}`
-      : `${styles.solid} ${styles.button}`;
+  let buttonStyle = `${styles.button}`;
+
+  switch (style) {
+    case "underline":
+      buttonStyle += ` ${styles.underline}`;
+      break;
+    case "solid":
+      buttonStyle += ` ${styles.solid}`;
+      break;
+  }
   return (
     <>
       {href ? (
-        <Link href={href} className={className}>
+        <Link href={href} className={buttonStyle}>
           <span>{text}</span>
         </Link>
       ) : (
-        <button onClick={onClick} className={className}>
+        <button onClick={onClick} className={buttonStyle}>
           <span>{text}</span>
         </button>
       )}

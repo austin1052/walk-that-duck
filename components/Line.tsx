@@ -1,4 +1,5 @@
 "use client";
+import { CSSProperties } from "react";
 import styles from "@/styles/Line.module.css";
 
 export default function Line({
@@ -17,16 +18,17 @@ export default function Line({
   const position = Math.floor(Math.random() * width);
   const delay = Math.random() * delayMultiplier;
 
+  // asign either rise or fall animation
   const animation = position % 2 ? `${styles.lineRise}` : `${styles.lineFall}`;
 
-  console.log(name);
-
+  // .background has initial values set for the variables --height and --time
+  // the height and time values applied to each line override the initial values
   const style = {
     "--height": `-${height}px`,
     "--time": `${time}s`,
     left: `${position}px`,
     animationDelay: `${delay}s`,
-  } as React.CSSProperties;
+  } as CSSProperties;
 
   return <div className={`${styles.line} ${animation}`} style={style}></div>;
 }

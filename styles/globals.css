@@ -2,20 +2,26 @@
 @import url("https://use.typekit.net/emb1ncn.css");
 
 :root {
-  --black: #0A0A0A;
-  --white: #f3dceb;
-  --dark: #161616;
-  --mid: #323232;
+  --black: rgb(10, 10, 10);
+  --white: rgb(243, 221, 235);
+  --whiteOpaque: rgba(243, 221, 235, 0.5);
+  --dark: rgb(22, 22, 22);
+  --darkOpaque: rgb(22, 22, 22, 0.7);
+  --mid: rgb(50, 50, 50);
   --midOpaque: rgba(90, 90, 90, 0.2);
-  --light: #ffc8e4;
-  --lightOpaque: rgb(255, 207, 231, 0.2);
-  /* --accent: rgba(220, 125, 180); */
+  --light: rgb(255, 200, 228);
+  --lightOpaque: rgb(255, 207, 231, 0.7);
   --accent: #c6609b;
   --accentOpaque: rgba(220, 125, 180, 0.6);
+
+  --background-gradient-light: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
+  --background-gradient-dark: linear-gradient(0deg, var(--black) 0%, var(--dark) 100%);
+
+
   --br: 4px;
-  --border1: 1px solid var(--lightOpaque);
-  --border2: 2px solid var(--lightOpaque);
   --bs: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --button-font-size: 1rem;
+
   --green: rgb(14, 160, 58, 0.2);
   --greenSolid: rgb(14, 160, 58);
   --greenBorder: rgb(14, 160, 58, 0.5);
@@ -50,12 +56,12 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
+  background: var(--background-gradient-light);
   background-color: var(--white);
 }
 
 body * {
-  color: var(--dark);
+  color: rgba(var(--dark), 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,7 +77,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--marginMobile);
+  padding: 0 var(--marginMobile);
 }
 
 h1, h1 * {
@@ -105,10 +111,19 @@ h1, h1 * {
   background-color: var(--accentOpaque);
 }
 
+.test-div {
+  width: 100%;
+  height: 300px;
+  border: 5px solid var(--mid);
+  border-radius: 2px;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
 
   body {
-    background: linear-gradient(0deg, var(--black) 0%, var(--dark) 100%);
+    background: var(--background-gradient-dark);
     background-color: var(--dark);
   }
 

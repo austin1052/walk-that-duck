@@ -1,5 +1,5 @@
 .background {
-  --height: 10px;
+  --height: 0px;
   --time: 15s;
   width: 100%;
   position: fixed;
@@ -12,6 +12,7 @@
 }
 
 .line {
+  /* --duckColor: var(--accent); */
   width: 2px;
   height: 2px;
   border-radius: 100%;
@@ -19,6 +20,13 @@
   position: absolute;
   bottom: 1rem;
 }
+
+/* .line > svg {
+  fill: var(--duckColor);
+  height: 10px;
+  width: 10px;
+}  */
+
 
 .lineFall {
   animation: fall var(--time) linear infinite backwards;
@@ -36,7 +44,7 @@
   min-height: 100%;
   margin: 0 auto;
   background-color: var(--white);
-  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--light) 10%, var(--accentOpaque) 45%, var(--light) 80%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--light) 10%, var(--mid) 45%, var(--light) 80%, rgba(0,0,0,0) 90%);
 }
 
 @keyframes fall {
@@ -83,7 +91,7 @@
   }
 
   .middleLine {
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--dark) 10%, var(--accentOpaque) 60%, var(--dark) 90%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--dark) 12%, var(--accentOpaque) 50%, var(--dark) 85%, rgba(0,0,0,0) 100%);
 
   }
 }
