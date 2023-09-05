@@ -3,16 +3,24 @@
 
 :root {
   --black: rgb(10, 10, 10);
-  --white: rgb(243, 221, 235);
+  --white: rgb(243, 221, 231);
   --whiteOpaque: rgba(243, 221, 235, 0.5);
   --dark: rgb(22, 22, 22);
   --darkOpaque: rgb(22, 22, 22, 0.7);
   --mid: rgb(50, 50, 50);
-  --midOpaque: rgba(90, 90, 90, 0.2);
-  --light: rgb(255, 200, 228);
-  --lightOpaque: rgb(255, 207, 231, 0.7);
-  --accent: #c6609b;
-  --accentOpaque: rgba(220, 125, 180, 0.6);
+  --midOpaque: rgba(90, 90, 90, 0.7);
+  --light: rgb(247, 193, 189);
+  --lightOpaque: rgb(247, 193, 189, 0.7);
+  --accent: rgb(198, 96, 138);
+  --accentOpaque: rgba(198, 96, 138, 0.6);
+  --accentDark: rgb(161, 63, 120);
+
+  /* --white: rgb(243, 221, 235); */
+  /* --light: rgb(255, 200, 228); */
+  /* --accent: rgb(198, 96, 155); */
+  /* --accentOpaque: rgba(220, 125, 180, 0.6); */
+  /* --accentDark: rgb(178, 75, 135); */
+
 
   --background-gradient-light: linear-gradient(0deg, var(--light) 0%, var(--white) 100%);
   --background-gradient-dark: linear-gradient(0deg, var(--black) 0%, var(--dark) 100%);
@@ -72,7 +80,7 @@ body * {
 
 main {
   position: relative;
-  z-index: 20;
+  z-index: 50;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -108,7 +116,7 @@ h1, h1 * {
   content: "";
   height: 0.75rem;
   border-radius: 2px;
-  background-color: var(--accentOpaque);
+  background-color: var(--accent);
 }
 
 .test-div {

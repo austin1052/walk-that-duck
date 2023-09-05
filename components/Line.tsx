@@ -1,5 +1,5 @@
 "use client";
-import { CSSProperties } from "react";
+import { CSSProperties, memo } from "react";
 import styles from "@/styles/Line.module.css";
 
 export default function Line({
@@ -9,12 +9,16 @@ export default function Line({
   height: number;
   width: number;
 }) {
-  // larger values make animation slower
-  const timeMultiplier = 3;
   const delayMultiplier = 15;
-  const timeList = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  const time =
-    timeList[Math.floor(Math.random() * timeList.length)] * timeMultiplier;
+
+  // smaller values make the delay slower
+  const minTime = Math.floor(height / 25);
+  const maxTime = Math.floor(height / 10);
+  const timeList = Array.from(
+    { length: maxTime - minTime },
+    (_, i) => i + minTime
+  );
+  const time = timeList[Math.floor(Math.random() * timeList.length)];
   const position = Math.floor(Math.random() * width);
   const delay = Math.random() * delayMultiplier;
 

@@ -8,19 +8,19 @@ import LogoutButton from "./LogoutButton";
 import styles from "@/styles/Nav.module.css";
 import lineStyles from "@/styles/Line.module.css";
 import { Session } from "@supabase/supabase-js";
+import Duck from "./Duck";
 
 export default function Nav({ session }: { session: Session | null }) {
-  // const [showNavBar, setShowNavBar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [navBarStyle, setNavBarStyle] = useState(`${styles.nav}`);
-  const [navAnimation, setNavAnimation] = useState(
-    `${styles.navMenuContainer}`
+  const [navBarStyle, setNavBarStyle] = useState(`${styles.nav} ${styles.top}`);
+  const [navMenuStyle, setNavMenuStyle] = useState(
+    `${styles.navMenu} ${styles.navMenuHidden}`
   );
-  // const [menuVisible, setMenuVisible] = useState(false);
-  const { menuVisible, setMenuVisible, showNavMenu, setShowNavMenu } =
-    useContext(NavContext);
+  const { menuVisible, setMenuVisible } = useContext(NavContext);
 
   const navMenuRef = useRef<HTMLDivElement>(null);
+
+  const navLinks = ["Home", "Profile", "Leagues", "Shop"];
 
   const path = usePathname();
 
@@ -33,33 +33,31 @@ export default function Nav({ session }: { session: Session | null }) {
       } else if (window.scrollY + 5 < lastScrollY) {
         // if scroll up show the navbar
         setNavBarStyle(`${styles.nav}`);
+      } else if (window.scrollY <= 0) {
+        setNavBarStyle(`${styles.nav} ${styles.top}`);
       }
+
       // remember current page location to use in the next move
       setLastScrollY(window.scrollY);
     }
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && menuVisible !== true) {
       window.addEventListener("scroll", controlNavbar);
       return () => {
         window.removeEventListener("scroll", controlNavbar);
       };
     }
-  }, [lastScrollY]);
+  }, [lastScrollY, menuVisible]);
 
   useEffect(() => {
-    console.log("add listener");
-    navMenuRef.current?.addEventListener(
-      "animationend",
-      () => {
-        if (menuVisible === false || menuVisible === null) {
-          setShowNavMenu(false);
-        }
-      },
-      { once: true }
-    );
-  }, [navAnimation]);
+    const menuStyle = menuVisible
+      ? `${styles.navMenu}`
+      : `${styles.navMenu} ${styles.navMenuHidden}`;
+
+    setNavMenuStyle(menuStyle);
+  }, [menuVisible]);
 
   const handleDisplayNavMenu = () => {
     console.log(menuVisible);
@@ -71,56 +69,63 @@ export default function Nav({ session }: { session: Session | null }) {
       setMenuVisible(false);
     }
 
-    if (!showNavMenu) {
-      setShowNavMenu(!showNavMenu);
-    }
+    // const menuStyle = menuVisible
+    //   ? `${styles.navMenu} ${styles.navMenuHidden}`
+    //   : `${styles.navMenu}`;
 
-    const animation = menuVisible
-      ? `${styles.navMenuContainer} ${styles.fadeOut}`
-      : `${styles.navMenuContainer} ${styles.fadeIn}`;
-
-    setNavAnimation(animation);
+    // setNavMenuStyle(menuStyle);
   };
 
   return (
     <>
-      {path !== "/login" && (
+      <nav className={navBarStyle}>
         <>
-          <nav className={navBarStyle}>
-            <div className={styles.menuButton}>
-              <Button
-                onClick={handleDisplayNavMenu}
-                text={menuVisible ? "close" : "menu"}
-                style="underline"
-              />
+          {session ? (
+            // Display Duck component if the session exists and the path is not "/"
+            path !== "/" && (
+              <div className={styles.duck}>
+                <Duck />
+              </div>
+            )
+          ) : // Display login button if there is no session
+          path !== "/login" && !menuVisible ? (
+            <div className={styles.loginButton}>
+              <Button href={"/login"} text={"log in"} style="underline" />
             </div>
-            {session ? (
-              <LogoutButton />
-            ) : (
-              <div className={styles.loginButton}>
-                <Button href={"/login"} text={"log in"} style="underline" />
-              </div>
-            )}
-          </nav>
-          {showNavMenu && (
-            <>
-              <div className={navAnimation}>
-                <div ref={navMenuRef}>
-                  <ul>
-                    <li>home</li>
-                    <li>profile</li>
-                    <li></li>
-                  </ul>
-                </div>
-                <div
-                  className={lineStyles.middleLine}
-                  style={{ zIndex: "90" }}
-                ></div>
-              </div>
-            </>
+          ) : (
+            // Display Duck component if the path is "/login"
+            <div className={styles.duck}>
+              <Duck />
+            </div>
           )}
         </>
-      )}
+
+        {path !== "/login" && (
+          <div className={styles.menuButton}>
+            <Button
+              onClick={handleDisplayNavMenu}
+              text={menuVisible ? "close" : "menu"}
+              style="underline"
+            />
+          </div>
+        )}
+      </nav>
+
+      <div className={navMenuStyle} ref={navMenuRef}>
+        {menuVisible && (
+          <ul className={styles.perspective}>
+            {navLinks.map((link, i) => {
+              const delay = i * 40;
+              return <li style={{ animationDelay: `${delay}ms` }}>{link}</li>;
+            })}
+            <div className={styles.logOutButton}>
+              <LogoutButton style="solid" />
+            </div>
+          </ul>
+        )}
+
+        <div className={lineStyles.middleLine} style={{ zIndex: "80" }}></div>
+      </div>
     </>
   );
 }
