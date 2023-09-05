@@ -1,28 +1,20 @@
-import { useState, createContext } from "react";
-import { getSession } from "@/supabase/utils";
+import { useState, useEffect, createContext } from "react";
 
 export interface NavContext {
   menuVisible: boolean | null;
   setMenuVisible: React.Dispatch<React.SetStateAction<boolean | null>>;
-  showNavMenu: boolean;
-  setShowNavMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const NavContext = createContext<NavContext>({
-  menuVisible: null,
+  menuVisible: false,
   setMenuVisible: () => {},
-  showNavMenu: false,
-  setShowNavMenu: () => {},
 });
 
 export function NavContextProvider({ children }: any) {
-  const [showNavMenu, setShowNavMenu] = useState(false);
-  const [menuVisible, setMenuVisible] = useState<boolean | null>(null);
+  const [menuVisible, setMenuVisible] = useState<boolean | null>(false);
 
   return (
-    <NavContext.Provider
-      value={{ menuVisible, setMenuVisible, showNavMenu, setShowNavMenu }}
-    >
+    <NavContext.Provider value={{ menuVisible, setMenuVisible }}>
       {children}
     </NavContext.Provider>
   );

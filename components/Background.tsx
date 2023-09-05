@@ -36,6 +36,7 @@ export default function Background() {
     <div ref={linesRef} className={styles.background}>
       <div className={styles.middleLine}></div>
       {lines.length > 0 && lines}
+      <div className={styles.backdrop}></div>
     </div>
   );
 }

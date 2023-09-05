@@ -40,8 +40,6 @@ export default function Login() {
     // class names are changed inside this function and will trigger animations
     // view is changed in this function and will trigger useEffect to set showSignUp false
 
-    //
-
     e.preventDefault();
 
     view === "sign-in" ? setView("sign-up") : setView("sign-in");
@@ -77,7 +75,7 @@ export default function Login() {
         if (view === "sign-in") {
           setShowSignUp(false);
         }
-        inputRef?.current?.focus();
+        // inputRef?.current?.focus();
       },
       { once: true }
     );
@@ -236,7 +234,7 @@ export default function Login() {
                 }
               >
                 <Button
-                  text={view === "sign-up" ? "Sign Up" : "Sign In"}
+                  text={view === "sign-up" ? "sign Up" : "log In"}
                   style="solid"
                 />
               </div>
@@ -252,7 +250,7 @@ export default function Login() {
                 }
               >
                 <Button
-                  text={view === "sign-up" ? "Sign Up" : "Sign In"}
+                  text={view === "sign-up" ? "sign Up" : "log in"}
                   style="solid"
                 />
               </div>

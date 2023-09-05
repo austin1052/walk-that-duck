@@ -4,10 +4,8 @@
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   overflow: hidden;
-  /* position: fixed; */
-  /* z-index: 10; */
   width: 100%;
 }
 
@@ -48,7 +46,26 @@
   display: block;
 }
 
+.form label {
+  font-weight: 600;
+}
+
 .form input {
+  position: relative;
+  z-index: 20;
+  font-size: 1rem;
+  margin: 1rem 0;
+  padding: 0.5rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid var(--color);
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+
+}
+
+/* .form input {
   position: relative;
   z-index: 20;
   font-size: 1rem;
@@ -56,18 +73,18 @@
   padding: 0.5rem 0.5rem;
   background: var(--white);
   border: 2px solid var(--color);
-  border-radius: 2px;
+  border-radius: var(--br);
   outline: none;
   -webkit-appearance: none;
-  -webkit-border-radius: 2px;
-}
+  -webkit-border-radius: var(--br);
+} */
 
 .form input::placeholder {
   color: var(--accentOpaque);
 }
 
 .form input:focus-visible {
- border: 2px solid var(--accent);
+  border: 3px solid var(--dark);
 }
 
 .signUpInput:has(:invalid) {
@@ -80,7 +97,7 @@
 
 .loginButton > button {
   width: 100%;
-  margin-top: 2.4rem;
+  margin-top: 3.3rem;
   /* this stops the animation flickering before the view is changed */
   transform: translateZ(0);
 }
@@ -98,7 +115,6 @@
 
 .footer {
   position: fixed;
-  /* z-index: 20; */
   bottom: 3rem;
   left: 0;
   right: 0;
@@ -116,19 +132,19 @@
 @media (prefers-color-scheme: dark) {
 
   .form {
-    --color: var(--mid);
+    --color: var(--white);
   }
 
-  .form input {
-    background: var(--black);
-  }
+  .form input:focus-visible {
+     border: 3px solid var(--accent);
+   }
 
   .form input::placeholder {
     color: var(--mid);
   }
 
   .signUpInput:has(:placeholder-shown) {
-    --color: var(--mid);
+    --color: var(--light);
   }
 
   .switchViewButton {

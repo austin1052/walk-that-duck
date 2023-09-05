@@ -29,9 +29,12 @@
   padding: 0.5rem 1rem;
   font-weight: 800;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: var(--br);
   background: linear-gradient(0deg, var(--dark) 0%, var(--mid) 100%);
   cursor: pointer;
+
+  /* box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
  .solid * {
@@ -52,7 +55,9 @@
  @media (prefers-color-scheme: dark) {
 
   .solid {
-    background: var(--accent);
+    /* background: var(--accent); */
+    background: linear-gradient(0deg, var(--accentDark) 0%, var(--accent) 100%);
+
     color: var(--dark);
   }
 
