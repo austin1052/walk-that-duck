@@ -8,9 +8,9 @@
 
 .imageContainer {
   position: relative;
-  height: var(--imageHeight);
-  min-width: var(--imageHeight);
-  max-width: var(--imageHeight);
+  height: var(--queen-image-height);
+  min-width: var(--queen-image-height);
+  max-width: var(--queen-image-height);
   object-fit: contain;
   margin-right: 1rem;
 }

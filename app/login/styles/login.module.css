@@ -33,7 +33,7 @@
 
 .invalidMessage {
   margin-left: 1rem;
-  color: var(--redSolid);
+  color: var(--red);
   display: none;
   font-size: 0.8rem;
 }
@@ -80,7 +80,7 @@
 } */
 
 .form input::placeholder {
-  color: var(--accentOpaque);
+  color: var(--accent-opaque);
 }
 
 .form input:focus-visible {
@@ -88,7 +88,7 @@
 }
 
 .signUpInput:has(:invalid) {
-  --color: var(--redSolid);
+  --color: var(--red);
 }
 
 .signUpInput:has(:placeholder-shown) {
@@ -167,7 +167,7 @@
   }
 
   .inputContainer:has(.error) {
-    --color: var(--redSolid);
+    --color: var(--red);
     animation: shake 300ms;
   }
 
