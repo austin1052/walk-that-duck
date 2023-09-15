@@ -1,14 +1,13 @@
 "use client";
-import { CSSProperties, memo } from "react";
+import { CSSProperties } from "react";
 import styles from "@/styles/Line.module.css";
 
-export default function Line({
-  height,
-  width,
-}: {
+interface props {
   height: number;
   width: number;
-}) {
+}
+
+export default function Line({ height, width }: props) {
   const delayMultiplier = 15;
 
   // smaller values make the delay slower

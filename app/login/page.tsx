@@ -123,7 +123,11 @@ export default function Login() {
 
   type FormInputs = "email" | "password";
 
-  const setValidityMessage = (e: any, type?: FormInputs) => {
+  const setValidityMessage = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type?: FormInputs
+  ) => {
+    console.log("input");
     const input = e.target;
     if (input.value === "") return;
     if (type === "password" && view === "sign-in") return;

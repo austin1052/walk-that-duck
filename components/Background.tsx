@@ -5,25 +5,9 @@ import Line from "@/components/Line";
 import styles from "@/styles/Line.module.css";
 
 export default function Background() {
-  const [lines, setLines] = useState<any[]>([]);
+  const [dots, setDots] = useState<any[]>([]);
   const [componentLoaded, setComponentLoaded] = useState(false);
-  const linesRef = useRef<HTMLDivElement | null>(null);
-
-  // determines number of lines, bigger number = fewer lines
-  const elementDivider = 8;
-
-  useEffect(() => {
-    if (linesRef.current && componentLoaded) {
-      const height = linesRef.current.offsetHeight;
-      const width = linesRef.current.offsetWidth;
-      const numberOfElements = width / elementDivider;
-      let _lines = [];
-      for (let i = 0; i < numberOfElements; i++) {
-        _lines.push(<Line key={i} height={height} width={width} />);
-      }
-      setLines(_lines);
-    }
-  }, [componentLoaded]);
+  const dotsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -32,10 +16,26 @@ export default function Background() {
     return () => clearTimeout(timeout);
   }, []);
 
+  // determines number of lines, bigger number = fewer lines
+  const divider = 8;
+
+  useEffect(() => {
+    if (dotsRef.current && componentLoaded) {
+      const height = dotsRef.current.offsetHeight;
+      const width = dotsRef.current.offsetWidth;
+      const numberOfElements = width / divider;
+      let dots = [];
+      for (let i = 0; i < numberOfElements; i++) {
+        dots.push(<Line key={i} height={height} width={width} />);
+      }
+      setDots(dots);
+    }
+  }, [componentLoaded]);
+
   return (
-    <div ref={linesRef} className={styles.background}>
+    <div ref={dotsRef} className={styles.background}>
       <div className={styles.middleLine}></div>
-      {lines.length > 0 && lines}
+      {dots.length > 0 && dots}
       <div className={styles.backdrop}></div>
     </div>
   );

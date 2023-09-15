@@ -38,10 +38,10 @@ export default function Hero() {
           <span className="title-text">fantasy league</span>
         </div>
       </h1>
+      {/* <div className="test-div"></div>
       <div className="test-div"></div>
       <div className="test-div"></div>
-      <div className="test-div"></div>
-      <div className="test-div"></div>
+      <div className="test-div"></div> */}
     </>
   );
 }

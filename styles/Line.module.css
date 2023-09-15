@@ -1,6 +1,6 @@
 .background {
   --height: 0px;
-  --time: 15s;
+  --time: 0s;
   width: 100%;
   position: fixed;
   z-index: 10;
@@ -9,6 +9,7 @@
   left: 0;
   right: 0;
   overflow: hidden;
+  background: var(--background-gradient-light);
 }
 
 .backdrop {
@@ -49,7 +50,14 @@
   min-height: 100%;
   margin: 0 auto;
   background-color: var(--white);
-  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--light) 10%, var(--accent-opaque) 45%, var(--light) 80%, rgba(0,0,0,0) 90%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    var(--light) 10%,
+    var(--accent-opaque) 45%,
+    var(--light) 80%,
+    rgba(0, 0, 0, 0) 90%
+  );
 }
 
 @keyframes fall {
@@ -91,12 +99,21 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  .background {
+    background: var(--background-gradient-dark);
+  }
   .line {
     background-color: var(--accent);
   }
 
   .middleLine {
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, var(--dark) 12%, var(--accent-opaque) 50%, var(--dark) 85%, rgba(0,0,0,0) 100%);
-
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      var(--dark) 12%,
+      var(--accent-opaque) 50%,
+      var(--dark) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 }

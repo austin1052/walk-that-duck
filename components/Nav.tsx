@@ -36,7 +36,6 @@ export default function Nav({ session }: { session: Session | null }) {
       } else if (window.scrollY <= 0) {
         setNavBarStyle(`${styles.nav} ${styles.top}`);
       }
-
       // remember current page location to use in the next move
       setLastScrollY(window.scrollY);
     }
@@ -68,12 +67,6 @@ export default function Nav({ session }: { session: Session | null }) {
       console.log("set false");
       setMenuVisible(false);
     }
-
-    // const menuStyle = menuVisible
-    //   ? `${styles.navMenu} ${styles.navMenuHidden}`
-    //   : `${styles.navMenu}`;
-
-    // setNavMenuStyle(menuStyle);
   };
 
   return (

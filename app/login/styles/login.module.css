@@ -1,4 +1,3 @@
-
 /* animations are inside media query at the bottom of this file */
 
 .container {
@@ -14,6 +13,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
   width: min(400px, 100%);
   font-weight: 600;
 }
@@ -58,11 +58,11 @@
   padding: 0.5rem 0.5rem;
   background: none;
   border: none;
+  border-top: 3px solid rgba(0, 0, 0, 0);
   border-bottom: 3px solid var(--color);
   outline: none;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
-
 }
 
 /* .form input {
@@ -130,14 +130,13 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
   .form {
     --color: var(--white);
   }
 
   .form input:focus-visible {
-     border: 3px solid var(--accent);
-   }
+    border: 3px solid var(--accent);
+  }
 
   .form input::placeholder {
     color: var(--mid);
@@ -155,13 +154,11 @@
   .switchViewButton:hover {
     transform: scale(1.05);
   }
-
 }
 
 /******** ANIMATIONS ********/
 
 @media (prefers-reduced-motion: no-preference) {
-
   .signUpInput:has(:invalid:not(:focus):not(:placeholder-shown)) {
     animation: shake 300ms;
   }
@@ -172,13 +169,21 @@
   }
 
   @keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateX(0);
-    } 
-    20%, 40%, 60%, 80% {
+    }
+    20%,
+    40%,
+    60%,
+    80% {
       transform: translateX(-2%);
     }
-    10%, 30%, 50%, 70%, 90% {
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
       transform: translateX(2%);
     }
   }
@@ -187,20 +192,20 @@
     animation: slide-down 400ms both, opacity-1 400ms backwards;
     animation-delay: 100ms;
   }
-  
+
   .slideUp {
     animation: slide-up 400ms both, opacity-0 400ms forwards;
   }
-  
+
   .buttonSlideDown {
     animation: slide-down 400ms;
   }
-  
+
   .buttonSlideUp {
     animation: slide-up 400ms backwards;
     animation-delay: 100ms;
   }
-  
+
   .labelSlideDown {
     animation: label-slide-down 400ms both;
     animation-delay: 100ms;
@@ -233,7 +238,7 @@
     25% {
       transform: translateY(40px);
     }
-    
+
     100% {
       transform: translateY(0px);
     }
@@ -245,9 +250,9 @@
     }
 
     60% {
-      opacity: 0; 
+      opacity: 0;
     }
-    
+
     100% {
       opacity: 0;
     }
@@ -264,13 +269,21 @@
   }
 
   @keyframes shake {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateX(0);
-    } 
-    20%, 40%, 60%, 80% {
+    }
+    20%,
+    40%,
+    60%,
+    80% {
       transform: translateX(-2%);
     }
-    10%, 30%, 50%, 70%, 90% {
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
       transform: translateX(2%);
     }
   }
@@ -279,7 +292,7 @@
     0% {
       transform: translateY(0px);
     }
-    
+
     100% {
       transform: translateY(-100px);
     }
@@ -297,10 +310,10 @@
 
   @keyframes spin {
     from {
-      transform:rotate(360deg);
+      transform: rotate(360deg);
     }
     to {
-      transform:rotate(0deg);
+      transform: rotate(0deg);
     }
   }
 }
