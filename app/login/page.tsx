@@ -123,10 +123,8 @@ export default function Login() {
 
   type FormInputs = "email" | "password";
 
-  const setValidityMessage = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    type?: FormInputs
-  ) => {
+  // React.ChangeEvent<HTMLInputElement>,
+  const setValidityMessage = (e: any, type?: FormInputs) => {
     console.log("input");
     const input = e.target;
     if (input.value === "") return;
