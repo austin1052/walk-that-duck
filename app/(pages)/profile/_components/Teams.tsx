@@ -6,7 +6,7 @@ import { queenImages } from "@/test-data/images/images";
 import styles from "@/app/(pages)/profile/_styles/index.module.css";
 
 import styled, { keyframes } from "styled-components";
-import { Underline } from "../page";
+// import { Underline } from "../page";
 import { ProfileContext } from "@/app/_context/ProfileContext";
 
 const userTeams = ["premier", "ep. 1", "ep. 2"];
@@ -367,7 +367,7 @@ export default function Teams() {
           );
         })}
         <TotalPointsContainer>
-          <Underline></Underline>
+          {/* <Underline></Underline> */}
           <TotalPoints className={styles.totalPoints}>
             <div className="total-points-text">total points:</div>
             <div className="total-points">{formattedTotalPoints}</div>

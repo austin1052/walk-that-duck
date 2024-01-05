@@ -97,6 +97,11 @@
   resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.19.tgz"
   integrity sha512-vv1qrjXeGbuF2mOkhkdxMDtv9np7W4mcBtaDnHU+yJG+bBwa6rYsYSCI/9Xm5+TuF5SbZbrWO6G1NfTh1TMjvQ==
 
+"@prisma/client@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.npmjs.org/@prisma/client/-/client-5.7.1.tgz"
+  integrity sha512-TUSa4nUcC4nf/e7X3jyO1pEd6XcI/TLRCA0KjkA46RDIpxUaRsBYEOqITwXRW2c0bMFyKcCRXrH4f7h4q9oOlg==
+
 "@prisma/engines@5.1.0":
   version "5.1.0"
   resolved "https://registry.npmjs.org/@prisma/engines/-/engines-5.1.0.tgz"
@@ -1443,7 +1448,7 @@ pretty-bytes@^5.6.0:
   resolved "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
-prisma@^5.0.0:
+prisma@*, prisma@^5.0.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/prisma/-/prisma-5.1.0.tgz"
   integrity sha512-wkXvh+6wxk03G8qwpZMOed4Y3j+EQ+bMTlvbDZHeal6k1E8QuGKzRO7DRXlE1NV0WNgOAas8kwZqcLETQ2+BiQ==
