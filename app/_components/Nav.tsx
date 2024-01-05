@@ -20,7 +20,7 @@ export default function Nav({ session }: { session: Session | null }) {
 
   const navMenuRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = ["Home", "Profile", "Leagues", "Shop"];
+  const navLinks = ["Home", "About"];
 
   const path = usePathname();
 
@@ -98,7 +98,7 @@ export default function Nav({ session }: { session: Session | null }) {
           )}
         </>
 
-        {path !== "/login" && (
+        {/* {path !== "/login" && (
           <div className={styles.menuButton}>
             <Button
               onClick={handleDisplayNavMenu}
@@ -106,11 +106,11 @@ export default function Nav({ session }: { session: Session | null }) {
               style="underline"
             />
           </div>
-        )}
+        )} */}
       </nav>
 
       <div className={navMenuStyle} ref={navMenuRef}>
-        {menuVisible && (
+        {/* {menuVisible && (
           <ul className={styles.perspective}>
             {navLinks.map((link, i) => {
               const delay = i * 40;
@@ -120,7 +120,7 @@ export default function Nav({ session }: { session: Session | null }) {
               <LogoutButton style="solid" />
             </div>
           </ul>
-        )}
+        )} */}
 
         <div className={lineStyles.middleLine} style={{ zIndex: "80" }}></div>
       </div>

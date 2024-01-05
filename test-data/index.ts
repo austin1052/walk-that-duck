@@ -66,3 +66,111 @@ export const queenData: Queen[] = [
     active: true
   }
 ]
+
+interface Rank {
+  id: string;
+  placement: number;
+}
+
+export const ranks: Rank[] = [
+  {
+    id: 'alexismichelle',
+    placement: 9
+  },
+  {
+    id: 'dariennelake',
+    placement: 3
+  },
+  {
+    id: 'heidincloset',
+    placement: 7
+  },
+  {
+    id: 'jaymesmansfield',
+    placement: 8
+  },
+  {
+    id: 'jessicawild',
+    placement: 12
+  },
+  {
+    id: 'jimbo',
+    placement: 11
+  },
+  {
+    id: 'kahannamontrese',
+    placement: 6
+  },
+  {
+    id: 'kandymuse',
+    placement: 1
+  },
+  {
+    id: 'lalari',
+    placement: 2
+  },
+  {
+    id: 'monicabeverlyhillz',
+    placement: 10
+  },
+  {
+    id: 'mrskashadavis',
+    placement: 5
+  },
+  {
+    id: 'nayshalopez',
+    placement: 4
+  }
+];
+
+
+export const ranks2: Rank[] = [
+  {
+    id: 'alexismichelle',
+    placement: 1
+  },
+  {
+    id: 'dariennelake',
+    placement: 2
+  },
+  {
+    id: 'heidincloset',
+    placement: 3
+  },
+  {
+    id: 'jaymesmansfield',
+    placement: 4
+  },
+  {
+    id: 'jessicawild',
+    placement: 5
+  },
+  {
+    id: 'jimbo',
+    placement: 6
+  },
+  {
+    id: 'kahannamontrese',
+    placement: 7
+  },
+  {
+    id: 'kandymuse',
+    placement: 8
+  },
+  {
+    id: 'lalari',
+    placement: 9
+  },
+  {
+    id: 'monicabeverlyhillz',
+    placement: 10
+  },
+  {
+    id: 'mrskashadavis',
+    placement: 11
+  },
+  // {
+  //   id: 'nayshalopez',
+  //   placement: 14
+  // }
+];

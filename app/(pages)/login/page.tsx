@@ -259,7 +259,7 @@ export default function Login() {
             </>
           )}
 
-          <div className={styles.footer}>
+          {/* <div className={styles.footer}>
             {view === "sign-up"
               ? "Already have an account?"
               : "Don't have an account?"}
@@ -273,7 +273,7 @@ export default function Login() {
                 style="underline"
               />
             </div>
-          </div>
+          </div> */}
         </form>
       )}
     </div>

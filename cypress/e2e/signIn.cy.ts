@@ -8,7 +8,7 @@ describe('Sign in user', () => {
   const passwordInput = "[type=password]";
 
   it('Alerts user for invalid password length', () => {
-    cy.get(emailInput).type("isthebuststillrunnin@walkthatduck.com");
+    cy.get(emailInput).type("isthebusstillrunnin@walkthatduck.com");
     cy.get(passwordInput).type("2short{enter}");
     cy.get(`${passwordInput}:invalid`).should('have.length', 1)
   })

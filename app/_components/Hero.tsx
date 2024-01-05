@@ -35,7 +35,7 @@ export default function Hero() {
           <span className="">drag race </span>
         </div>
         <div>
-          <span className="title-text">fantasy league</span>
+          <span className="title-text">fantasy game</span>
         </div>
       </h1>
       {/* <div className="test-div"></div>
