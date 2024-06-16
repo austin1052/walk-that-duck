@@ -177,7 +177,9 @@ body:has(.navMenu:not(.navMenuHidden)) {
 }
 
 .show {
-  animation: show 300ms linear 200ms backwards, rotate 250ms ease-out 400ms;
+  animation:
+    show 300ms linear 200ms backwards,
+    rotate 250ms ease-out 400ms;
   transform-origin: center;
   transform-style: preserve-3d;
 }
@@ -207,8 +209,7 @@ body:has(.navMenu:not(.navMenuHidden)) {
   }
 
   50% {
-    transform: translateX(130px) translateY(10px) translateZ(-90px)
-      rotate3d(0, 1, 0, 90deg);
+    transform: translateX(130px) translateY(10px) translate\Z(-90px)rotate3d(0, 1, 0, 90deg);
   }
 
   80% {

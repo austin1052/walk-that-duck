@@ -6,10 +6,46 @@ import UserInfo from "@/app/(pages)/profile/_components/UserInfo";
 import ProfileNav from "@/app/(pages)/profile/_components/ProfileNav";
 import EpisodeTabs from "./_components/EpisodeTabs";
 import Teams from "@/app/(pages)/profile/_components/Teams";
-
 import styles from "@/app/(pages)/profile/_styles/index.module.css";
-
 import styled from "styled-components";
+
+export default function Profile() {
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const [isStuck, setIsStuck] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const rect = navRef?.current?.getBoundingClientRect();
+      if (!rect) return;
+      if (rect.top <= 70) {
+        setIsStuck(true);
+      } else {
+        setIsStuck(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <ProfileContextProvider>
+      <ProfilePage>
+        <UserInfo />
+        <NavContainer className={isStuck ? styles.backdrop : ""} ref={navRef}>
+          <ProfileNav />
+          <Underline></Underline>
+          <EpisodeTabs></EpisodeTabs>
+          <Underline></Underline>
+        </NavContainer>
+        <Teams />
+      </ProfilePage>
+    </ProfileContextProvider>
+  );
+}
 
 const ProfilePage = styled.div`
   width: 100%;
@@ -50,41 +86,3 @@ const Underline = styled.div`
     );
   }
 `;
-
-export default function Profile() {
-  const navRef = useRef<HTMLDivElement | null>(null);
-  const [isStuck, setIsStuck] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const rect = navRef?.current?.getBoundingClientRect();
-      if (!rect) return;
-      if (rect.top <= 70) {
-        setIsStuck(true);
-      } else {
-        setIsStuck(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  return (
-    <ProfileContextProvider>
-      <ProfilePage>
-        <UserInfo />
-        <NavContainer className={isStuck ? styles.backdrop : ""} ref={navRef}>
-          <ProfileNav />
-          <Underline></Underline>
-          <EpisodeTabs></EpisodeTabs>
-          <Underline></Underline>
-        </NavContainer>
-        <Teams />
-      </ProfilePage>
-    </ProfileContextProvider>
-  );
-}

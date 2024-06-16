@@ -144,6 +144,7 @@ export default function Login() {
     (input as HTMLInputElement).setCustomValidity(message);
   };
 
+  // TODO: move into seperate components
   return (
     <div className={styles.container}>
       {view === "check-email" ? (
@@ -242,6 +243,7 @@ export default function Login() {
               </div>
             </>
           ) : (
+            // TODO: remove duplicated button
             <>
               <div
                 data-testid="log-in-button"
@@ -259,7 +261,7 @@ export default function Login() {
             </>
           )}
 
-          {/* <div className={styles.footer}>
+          <div className={styles.footer}>
             {view === "sign-up"
               ? "Already have an account?"
               : "Don't have an account?"}
@@ -273,7 +275,7 @@ export default function Login() {
                 style="underline"
               />
             </div>
-          </div> */}
+          </div>
         </form>
       )}
     </div>

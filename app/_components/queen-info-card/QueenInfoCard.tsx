@@ -1,22 +1,39 @@
 import QueenImage from "./QueenImage";
-import styles from "@/app/_components//queen-info-card/styles/index.module.css";
 import styled from "styled-components";
-
-// const
 
 const QueenInfoCard = ({ queen }: any) => {
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.imageContainer}>
+      <Container>
+        <ImageContainer>
           <QueenImage queen={queen} />
-        </div>
-        <div className={styles.queenName}>
-          <div>{queen.name}</div>
-        </div>
-      </div>
+        </ImageContainer>
+        <QueenName>{queen.name}</QueenName>
+      </Container>
     </>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+`;
+
+const QueenName = styled.div`
+  font-weight: 600;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  height: var(--queen-image-height);
+  min-width: var(--queen-image-height);
+  max-width: var(--queen-image-height);
+  object-fit: contain;
+  margin-right: 1rem;
+
+  img {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+`;
 export default QueenInfoCard;

@@ -9,12 +9,10 @@ export default function Index() {
   return (
     <>
       <Hero />
-      <Form>
+      {/* <Form>
         <InviteInput placeholder="enter invite code" />
         <Button text="go" style="solid" />
-      </Form>
-      {/* <input placeholder="enter invite code" /> */}
-      {/* <div>enter invite code</div> */}
+      </Form> */}
     </>
   );
 }

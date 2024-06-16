@@ -14,6 +14,38 @@ const userTeams = [
   "ep. 6",
 ];
 
+export default function EpisodeTabs() {
+  const { activeTeam, setActiveTeam } = useContext(ProfileContext);
+
+  function handleActiveTeam(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    const button = e.target as HTMLElement;
+    setActiveTeam(button.innerText);
+    window.scrollTo({
+      top: 152,
+      behavior: "smooth",
+    });
+  }
+
+  return (
+    <>
+      <Container>
+        {userTeams.map((team) => {
+          return (
+            <EpisodeTab
+              $active={team === activeTeam}
+              onClick={(e) => handleActiveTeam(e)}
+            >
+              {team}
+            </EpisodeTab>
+          );
+        })}
+      </Container>
+    </>
+  );
+}
+
 const Container = styled.div`
   display: flex;
   width: 100%;
@@ -51,35 +83,3 @@ const EpisodeTab = styled.button<{ $active?: boolean }>`
         : "linear-gradient(0deg, var(--mid-dark) 0%, var(--mid) 100%)"};
   }
 `;
-
-export default function EpisodeTabs() {
-  const { activeTeam, setActiveTeam } = useContext(ProfileContext);
-
-  function handleActiveTeam(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    const button = e.target as HTMLElement;
-    setActiveTeam(button.innerText);
-    window.scrollTo({
-      top: 152,
-      behavior: "smooth",
-    });
-  }
-
-  return (
-    <>
-      <Container>
-        {userTeams.map((team) => {
-          return (
-            <EpisodeTab
-              $active={team === activeTeam}
-              onClick={(e) => handleActiveTeam(e)}
-            >
-              {team}
-            </EpisodeTab>
-          );
-        })}
-      </Container>
-    </>
-  );
-}
