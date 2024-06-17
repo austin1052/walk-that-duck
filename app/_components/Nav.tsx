@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useContext, useRef } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { NavContext } from "@/app/_context/NavContext";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
@@ -9,6 +11,25 @@ import styles from "@/app/_styles/Nav.module.css";
 import lineStyles from "@/app/_styles/Line.module.css";
 import { Session } from "@supabase/supabase-js";
 import Duck from "./Duck";
+
+const navLinks = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Profile",
+    path: "/profile",
+  },
+  {
+    title: "Selection",
+    path: "/team-selection",
+  },
+  {
+    title: "Email",
+    path: "/email-confirmed",
+  },
+];
 
 export default function Nav({ session }: { session: Session | null }) {
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -20,11 +41,11 @@ export default function Nav({ session }: { session: Session | null }) {
 
   const navMenuRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = ["Home", "About"];
-
+  const router = useRouter();
   const path = usePathname();
 
   const controlNavbar = () => {
+    // Hides menu when user scrolls down
     if (typeof window !== "undefined") {
       // need to check if windowScrollY is > 0 for phones that may have a bounce animation when scrolling to the top of the page
       // if (window.scrollY > 0 && window.scrollY > lastScrollY) {
@@ -36,6 +57,8 @@ export default function Nav({ session }: { session: Session | null }) {
       // } else if (window.scrollY <= 0) {
       //   setNavBarStyle(`${styles.nav} ${styles.top}`);
       // }
+
+      // Changes nav background opacity to 0 when it user is at top of window
       if (window.scrollY <= 0) {
         setNavBarStyle(`${styles.nav} ${styles.top}`);
       } else {
@@ -75,6 +98,7 @@ export default function Nav({ session }: { session: Session | null }) {
   };
 
   // TODO: This return is not serving... hard to read. needs to be cleaned up a bit.
+  // TODO: style desktop nav
   return (
     <>
       <nav className={navBarStyle}>
@@ -88,14 +112,15 @@ export default function Nav({ session }: { session: Session | null }) {
             )
           ) : // Display login button if there is no session
           path !== "/login" && !menuVisible ? (
-            <div className={styles.loginButton}>
-              <Button href={"/login"} text={"log in"} style="underline" />
-            </div>
+            <>
+              <div className={styles.loginButton}>
+                <Button href={"/login"} text={"log in"} style="underline" />
+              </div>
+              <NavDuck />
+            </>
           ) : (
             // Display Duck component if the path is "/login"
-            <div className={styles.duck}>
-              <Duck />
-            </div>
+            <NavDuck />
           )}
         </>
 
@@ -114,9 +139,16 @@ export default function Nav({ session }: { session: Session | null }) {
       <div className={navMenuStyle} ref={navMenuRef}>
         {menuVisible && (
           <ul className={styles.perspective}>
-            {navLinks.map((link, i) => {
+            {navLinks.map(({ title, path }, i) => {
               const delay = i * 40;
-              return <li style={{ animationDelay: `${delay}ms` }}>{link}</li>;
+              return (
+                <li
+                  style={{ animationDelay: `${delay}ms` }}
+                  onClick={() => setMenuVisible(false)}
+                >
+                  <Link href={path}>{title}</Link>
+                </li>
+              );
             })}
             <div className={styles.logOutButton}>
               <LogoutButton style="solid" />
@@ -127,5 +159,15 @@ export default function Nav({ session }: { session: Session | null }) {
         <div className={lineStyles.middleLine} style={{ zIndex: "80" }}></div>
       </div>
     </>
+  );
+}
+
+function NavDuck() {
+  return (
+    <Link href="/">
+      <div className={styles.duck}>
+        <Duck />
+      </div>
+    </Link>
   );
 }

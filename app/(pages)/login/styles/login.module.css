@@ -54,7 +54,7 @@
   position: relative;
   z-index: 20;
   font-size: 1rem;
-  margin: 1rem 0;
+  margin: var(--gap-1) 0;
   padding: 0.5rem 0.5rem;
   background: none;
   border: none;
@@ -189,12 +189,16 @@
   }
 
   .slideDown {
-    animation: slide-down 400ms both, opacity-1 400ms backwards;
+    animation:
+      slide-down 400ms both,
+      opacity-1 400ms backwards;
     animation-delay: 100ms;
   }
 
   .slideUp {
-    animation: slide-up 400ms both, opacity-0 400ms forwards;
+    animation:
+      slide-up 400ms both,
+      opacity-0 400ms forwards;
   }
 
   .buttonSlideDown {

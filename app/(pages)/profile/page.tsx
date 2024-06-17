@@ -55,10 +55,10 @@ const NavContainer = styled.div`
   position: sticky;
   top: 68.17px;
   z-index: 50;
-  width: calc(100% + 2 * var(--margin-mobile));
-  transform: translateX(calc(-1 * var(--margin-mobile)));
-  padding: 0 var(--margin-mobile);
-  margin-bottom: 1.5rem;
+  width: calc(100% + 2 * var(--gap-1));
+  transform: translateX(calc(-1 * var(--gap-1)));
+  padding: 0 var(--gap-1);
+  margin-bottom: var(--gap-2);
 `;
 // border-bottom: 1px solid var(--accent);
 
