@@ -267,12 +267,12 @@ const Queen = styled.div<{ $delay: number }>`
   position: relative;
   display: flex;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: var(--gap-1);
   animation: ${slide} 800ms ease-out both;
   animation-delay: ${(props) => props.$delay}ms;
 
   .placement {
-    margin-right: 1rem;
+    margin-right: var(--gap-1);
     align-self: center;
     transform: translateY(-3px);
     display: flex;
@@ -296,7 +296,7 @@ const Queen = styled.div<{ $delay: number }>`
 
 const QueenImage = styled.div`
   position: relative;
-  margin-right: 1rem;
+  margin-right: var(--gap-1);
   border-radius: 4px;
 
   img {

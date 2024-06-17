@@ -8,13 +8,12 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   height: 80px;
-  margin-bottom: 1.5rem;
-  margin-top: 3rem;
+  margin: 1var (--gap-2) 0;
 `;
 
 const ProfilePicture = styled.div`
   position: relative;
-  margin-right: 1rem;
+  margin-right: var(--gap-1);
   border-radius: 4px;
 
   img {

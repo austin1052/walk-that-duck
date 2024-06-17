@@ -6,8 +6,8 @@
 
 .queenPlacement > div {
   height: var(--queen-image-height);
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin-bottom: var(--gap-1);
+  margin-right: var(--gap-1);
   display: grid;
   place-items: center;
   font-size: 1.2rem;
@@ -21,7 +21,7 @@
 
 .listItem {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: var(--gap-1);
 }
 
 .iconContainer {
