@@ -4,12 +4,13 @@ import { useState, useRef, useEffect } from "react";
 import Button from "@/app/_components/Button";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import styles from "./styles/login.module.css";
+import classNames from "classnames";
+import styles from "./styles/SignIn.module.css";
 // import "@/app/_styles/globals.css";
 
 type View = "sign-in" | "sign-up" | "check-email";
 
-export default function Login() {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -18,18 +19,21 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const [classNames, setClassNames] = useState({
-    name: `${styles.inputContainer}`,
-    label: "",
-    input: `${styles.inputContainer}`,
-    button: `${styles.loginButton}`,
-  });
+  // dont need this state. set additional classes with classNames package using view booleans
+  // const [classNames, setClassNames] = useState({
+  //   name: `${styles.inputContainer}`,
+  //   label: `${styles.label}`,
+  //   input: `${styles.inputContainer}`,
+  //   button: `${styles.signInButton}`,
+  // });
 
   const animationRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const router = useRouter();
   const supabase = createClientComponentClient();
+
+  const signInButtonStyles = classNames(`${styles.signInButton}`, { [styles.buttonSlide]: showSignUp });
 
   const handleSetView = (e: React.MouseEvent<HTMLButtonElement>) => {
     // when showSignUp === false and sign-up components are hidden
@@ -53,33 +57,38 @@ export default function Login() {
       ? `${styles.inputContainer} ${styles.slideUp}`
       : `${styles.signUpInput} ${styles.inputContainer} ${styles.slideDown}`;
 
+    // view === "sign-up"
+    // classNames(`${styles.inputContainer}`, {`${}`});
+
     const label = showSignUp
-      ? `${styles.labelSlideUp}`
-      : `${styles.labelSlideDown}`;
+      ? `${styles.label} ${styles.labelSlideUp}`
+      : `${styles.label} ${styles.labelSlideDown}`;
 
     const input = showSignUp
       ? `${styles.inputContainer}`
       : `${styles.signUpInput} ${styles.inputContainer}`;
 
-    const button = showSignUp
-      ? `${styles.loginButton} ${styles.buttonSlideUp}`
-      : `${styles.loginButton} ${styles.buttonSlideDown}`;
+    // const button = showSignUp
+    //   ? `${styles.signInButton}`
+    //   : `${styles.signInButton} ${styles.buttonSlide}`;
 
-    setClassNames({ name, label, input, button });
+    const signInButtonStyles = classNames(`${styles.signInButton}`, { [styles.buttonSlide]: showSignUp });
+
+    // setClassNames({ name, label, input, button });
   };
 
-  useEffect(() => {
-    animationRef.current?.addEventListener(
-      "animationend",
-      () => {
-        if (view === "sign-in") {
-          setShowSignUp(false);
-        }
-        // inputRef?.current?.focus();
-      },
-      { once: true }
-    );
-  }, [view]);
+  // useEffect(() => {
+  //   animationRef.current?.addEventListener(
+  //     "animationend",
+  //     () => {
+  //       if (view === "sign-in") {
+  //         setShowSignUp(false);
+  //       }
+  //       // inputRef?.current?.focus();
+  //     },
+  //     { once: true }
+  //   );
+  // }, [view]);
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -157,15 +166,6 @@ export default function Login() {
           onSubmit={view === "sign-in" ? handleSignIn : handleSignUp}
         >
           <div className={classNames.input}>
-            <div className={styles.label}>
-              <label htmlFor="email">Email</label>
-              <div
-                className={styles.invalidMessage}
-                data-testid="invalid-email-error"
-              >
-                Enter a valid email
-              </div>
-            </div>
             <input
               required
               name="email"
@@ -177,9 +177,32 @@ export default function Login() {
               onInput={(e) => setValidityMessage(e)}
               ref={inputRef}
             />
+            <div className={styles.label}>
+              <label htmlFor="email">Email</label>
+              <div
+                className={styles.invalidMessage}
+                data-testid="invalid-email-error"
+              >
+                Enter a valid email
+              </div>
+            </div>
           </div>
 
           <div className={classNames.input}>
+            <input
+              required
+              name="password"
+              type="password"
+              pattern=".{8,}"
+              onChange={(e) => {
+                setError(false);
+                setPassword(e.target.value);
+              }}
+              value={password}
+              placeholder="••••••••"
+              onInvalid={(e) => setValidityMessage(e, "password")}
+              onInput={(e) => setValidityMessage(e)}
+            />
             <div className={styles.label}>
               <label htmlFor="password">Password</label>
               <div
@@ -197,28 +220,13 @@ export default function Login() {
                 </div>
               )}
             </div>
-            <input
-              required
-              name="password"
-              type="password"
-              pattern=".{8,}"
-              onChange={(e) => {
-                setError(false);
-                setPassword(e.target.value);
-              }}
-              value={password}
-              placeholder="••••••••"
-              onInvalid={(e) => setValidityMessage(e, "password")}
-              onInput={(e) => setValidityMessage(e)}
-            />
           </div>
 
-          {showSignUp ? (
+          {/* using transition instead of animation */}
+          {/* TODO: change class names based on view === "sign-up" */}
+          {view === "sign-up" ? (
             <>
               <div className={classNames.name} ref={animationRef}>
-                <label htmlFor="name" className={classNames.label}>
-                  Your Name
-                </label>
                 <input
                   required
                   name="name"
@@ -227,6 +235,9 @@ export default function Login() {
                   value={userName}
                   placeholder="Sasha Colby"
                 />
+                <label htmlFor="name" className={classNames.label}>
+                  Your Name
+                </label>
               </div>
               <div
                 data-testid="log-in-button"
@@ -237,7 +248,7 @@ export default function Login() {
                 }
               >
                 <Button
-                  text={view === "sign-up" ? "sign Up" : "log In"}
+                  text={view === "sign-up" ? "sign Up" : "sign In"}
                   style="solid"
                 />
               </div>
@@ -249,12 +260,12 @@ export default function Login() {
                 data-testid="log-in-button"
                 className={
                   isLoading
-                    ? `${styles.loginButton} ${styles.loading}`
-                    : `${styles.loginButton}`
+                    ? `${styles.signInButton} ${styles.loading}`
+                    : `${styles.signInButton}`
                 }
               >
                 <Button
-                  text={view === "sign-up" ? "sign Up" : "log in"}
+                  text={view === "sign-up" ? "sign Up" : "sign in"}
                   style="solid"
                 />
               </div>
@@ -281,3 +292,5 @@ export default function Login() {
     </div>
   );
 }
+
+function SignInButton() {}

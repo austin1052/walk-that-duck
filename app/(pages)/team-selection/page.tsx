@@ -8,7 +8,7 @@ export default async function TeamSelection() {
   if (!session) {
     // This route can only be accessed by authenticated users.
     // Unauthenticated users will be redirected to the `/login` route.
-    redirect("/login");
+    redirect("/sign-in");
   }
 
   return (

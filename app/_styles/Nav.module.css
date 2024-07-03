@@ -129,7 +129,7 @@
   }
 }
 
-.logOutButton {
+.signOutButton {
   --button-font-size: 1.25rem;
   position: absolute;
   bottom: 3rem;
