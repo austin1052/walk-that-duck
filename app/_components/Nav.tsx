@@ -6,7 +6,7 @@ import Link from "next/link";
 import { NavContext } from "@/app/_context/NavContext";
 import { usePathname } from "next/navigation";
 import Button from "./Button";
-import LogoutButton from "./LogoutButton";
+import SignOutButton from "./SignOutButton";
 import styles from "@/app/_styles/Nav.module.css";
 import lineStyles from "@/app/_styles/Line.module.css";
 import { Session } from "@supabase/supabase-js";
@@ -110,21 +110,21 @@ export default function Nav({ session }: { session: Session | null }) {
                 <Duck />
               </div>
             )
-          ) : // Display login button if there is no session
-          path !== "/login" && !menuVisible ? (
+          ) : // Display sign in button if there is no session
+          path !== "/sign-in" && !menuVisible ? (
             <>
-              <div className={styles.loginButton}>
-                <Button href={"/login"} text={"log in"} style="underline" />
+              <div className={styles.signInButton}>
+                <Button href={"/sign-in"} text={"sign in"} style="underline" />
               </div>
               <NavDuck />
             </>
           ) : (
-            // Display Duck component if the path is "/login"
+            // Display Duck component if the path is "/sign-in"
             <NavDuck />
           )}
         </>
 
-        {path !== "/login" && (
+        {path !== "/sign-in" && (
           <div className={styles.menuButton}>
             <Button
               onClick={handleDisplayNavMenu}
@@ -150,8 +150,8 @@ export default function Nav({ session }: { session: Session | null }) {
                 </li>
               );
             })}
-            <div className={styles.logOutButton}>
-              <LogoutButton style="solid" />
+            <div className={styles.signOutButton}>
+              <SignOutButton style="solid" />
             </div>
           </ul>
         )}

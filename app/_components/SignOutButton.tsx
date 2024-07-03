@@ -6,7 +6,7 @@ import Button from "./Button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 
-export default function LogoutButton({
+export default function SignOutButton({
   style,
 }: {
   style: "underline" | "solid";
