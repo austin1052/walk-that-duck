@@ -1,4 +1,3 @@
-import App from "./App";
 import Background from "@/app/_components/Background";
 import Nav from "@/app/_components/Nav";
 import { getSession } from "@/supabase/utils";

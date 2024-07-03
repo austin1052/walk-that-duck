@@ -20,12 +20,12 @@ export default function SignIn() {
   const [error, setError] = useState(false);
 
   // dont need this state. set additional classes with classNames package using view booleans
-  // const [classNames, setClassNames] = useState({
-  //   name: `${styles.inputContainer}`,
-  //   label: `${styles.label}`,
-  //   input: `${styles.inputContainer}`,
-  //   button: `${styles.signInButton}`,
-  // });
+  const [classNames, setClassNames] = useState({
+    name: `${styles.inputContainer}`,
+    label: `${styles.label}`,
+    input: `${styles.inputContainer}`,
+    button: `${styles.signInButton}`,
+  });
 
   const animationRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -33,7 +33,9 @@ export default function SignIn() {
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const signInButtonStyles = classNames(`${styles.signInButton}`, { [styles.buttonSlide]: showSignUp });
+  // const signInButtonStyles = classNames(`${styles.signInButton}`, {
+  //   [styles.buttonSlide]: showSignUp,
+  // });
 
   const handleSetView = (e: React.MouseEvent<HTMLButtonElement>) => {
     // when showSignUp === false and sign-up components are hidden
@@ -68,13 +70,13 @@ export default function SignIn() {
       ? `${styles.inputContainer}`
       : `${styles.signUpInput} ${styles.inputContainer}`;
 
-    // const button = showSignUp
-    //   ? `${styles.signInButton}`
-    //   : `${styles.signInButton} ${styles.buttonSlide}`;
+    const button = showSignUp
+      ? `${styles.signInButton}`
+      : `${styles.signInButton} ${styles.buttonSlide}`;
 
-    const signInButtonStyles = classNames(`${styles.signInButton}`, { [styles.buttonSlide]: showSignUp });
+    // const signInButtonStyles = classNames(`${styles.signInButton}`, { [styles.buttonSlide]: showSignUp });
 
-    // setClassNames({ name, label, input, button });
+    setClassNames({ name, label, input, button });
   };
 
   // useEffect(() => {
@@ -265,7 +267,8 @@ export default function SignIn() {
                 }
               >
                 <Button
-                  text={view === "sign-up" ? "sign Up" : "sign in"}
+                  // text={view === "sign-up" ? "sign Up" : "sign in"}
+                  text="sign up"
                   style="solid"
                 />
               </div>
